@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/fonts": "^0.12.1",
     "@nuxt/image": "^2.0.0",
     "@nuxtjs/color-mode": "^4.0.0",
     "@tailwindcss/vite": "^4.1.18",
@@ -17,6 +18,8 @@
     "clsx": "^2.1.1",
     "lucide-vue-next": "^0.562.0",
     "nuxt": "^4.2.2",
+    "prettier": "^3.8.0",
+    "reka-ui": "^2.7.0",
     "shadcn-nuxt": "^2.4.3",
     "tailwind-merge": "^3.4.0",
     "tailwindcss": "^4.1.18",
