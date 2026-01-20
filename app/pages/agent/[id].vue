@@ -7,4 +7,3 @@
         Agent {{ id }}
     </div>
 </template>
-
