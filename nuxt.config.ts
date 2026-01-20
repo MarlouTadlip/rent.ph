@@ -11,7 +11,7 @@ export default defineNuxtConfig({
   image: {
     // Options
   },
-  modules: ['@nuxt/image', '@nuxtjs/color-mode', 'v-gsap-nuxt', 'shadcn-nuxt', '@nuxt/fonts'],
+  modules: ['@nuxt/image', '@nuxtjs/color-mode', 'v-gsap-nuxt', 'shadcn-nuxt', '@nuxt/fonts', '@nuxt/icon'],
   shadcn: {
     /**
      * Prefix for all the imported component.
@@ -25,5 +25,15 @@ export default defineNuxtConfig({
      * @default "@/components/ui"
      */
     componentDir: '@/components/ui',
+  },
+  colorMode: {
+    preference: 'light', // default value of $colorMode.preference
+    fallback: 'light', // fallback value if not system preference found
+    globalName: '__NUXT_COLOR_MODE__',
+    componentName: 'ColorScheme',
+    classPrefix: '',
+    classSuffix: '',
+    storage: 'localStorage', // or 'sessionStorage' or 'cookie'
+    storageKey: 'nuxt-color-mode',
   },
 })
