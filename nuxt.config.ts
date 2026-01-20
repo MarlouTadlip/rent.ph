@@ -9,5 +9,5 @@ export default defineNuxtConfig({
       tailwindcss(),
     ],
   },
-  modules: ['@nuxt/image', '@nuxtjs/color-mode']
+  modules: ['@nuxt/image', '@nuxtjs/color-mode', 'v-gsap-nuxt']
 })
