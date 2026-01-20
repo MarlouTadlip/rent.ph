@@ -2,8 +2,8 @@
 const scrollPosY = ref(0)
 const navbarClass = computed(() => {
   if (scrollPosY.value >= 30)
-    return 'w-11/12 h-4/5 border-2 border-[#205ed7] rounded-full bg-[#205ed7]/10'
-  else return 'w-full  h-full'
+    return 'w-11/12 h-4/5 border-2 rounded-full bg-[#7ea8fc]/20 dark:bg-[#205ed7]/20 px-8'
+  else return 'w-full h-full px-12'
 })
 const ypos = () => {
   console.log(scrollPosY.value)
@@ -42,16 +42,19 @@ const anchors = [
   <div class="fixed top-0 z-100 flex items-center justify-center h-20 w-full">
     <div
       :class="[
-        'transition-all duration-400  flex justify-between items-center py-4 px-6',
+        'transition-all duration-400  flex justify-between items-center py-4 border-[#205ed7]',
         navbarClass,
       ]"
     >
-      <NuxtImg src="/rentph-logo.png" class="h-12" />
-      <div class="flex h-full gap-8 items-center">
+      <NuxtImg
+        src="/rentph-logo.png"
+        class="h-12 drop-shadow-lg drop-shadow-[#eecfa6]/80 dark:drop-shadow-[#e0af6e]/40"
+      />
+      <div class="flex h-full gap-12 items-center">
         <NuxtLink
           v-for="anchor in anchors"
           :to="anchor.link"
-          class="relative group pb-1 hover:text-[#205ed7] duration-300 transition-colors"
+          class="relative group pb-1 font-medium hover:text-[#205ed7] drop-shadow-md dark:drop-shadow-black/20"
         >
           {{ anchor.label }}
           <span
@@ -60,7 +63,8 @@ const anchors = [
         </NuxtLink>
       </div>
       <div class="flex h-full gap-4 items-center">
-        <Button @click="ypos" variant="outline">Login</Button>
+        <DarkModeSwitch></DarkModeSwitch>
+        <Button @click="ypos" variant="ghost">Login</Button>
         <Button variant="default">Register</Button>
       </div>
     </div>
