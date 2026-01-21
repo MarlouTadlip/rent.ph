@@ -1,20 +1,13 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Multimarquee from '~/components/multiMarquee.vue'
+</script>
 <template>
   <div class="w-screen min-h-screen">
     <ClientOnly>
       <Navbar />
     </ClientOnly>
     <Hero />
-    <Marquee
-      :items="[
-        'Apartments',
-        'Condos',
-        'Boarding Houses',
-        'Pet Friendly',
-        'Near IT Park',
-        'Budget Rentals',
-      ]"
-    />
+    <Multimarquee />
     <div class="h-screen w-screen"></div>
   </div>
 </template>
