@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import PartnersAndSponsors from '~/components/partnersAndSponsors.vue'
+import Testimonials from '~/components/testimonials.vue'
 </script>
 <template>
   <div class="w-screen min-h-screen">
@@ -12,6 +13,9 @@ import PartnersAndSponsors from '~/components/partnersAndSponsors.vue'
     </div>
     <ClientOnly>
       <PartnersAndSponsors />
+    </ClientOnly>
+    <ClientOnly>
+      <Testimonials />
     </ClientOnly>
     <ClientOnly>
       <Footer />
