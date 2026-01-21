@@ -29,18 +29,19 @@ const secondRow = ref(reviews.slice(reviews.length / 2))
 </script>
 
 <template>
-  <div class="p-5">
+  <div class="p-10">
     <h1 class="text-3xl">Partners & Sponsors</h1>
+    <p>Lorem ipsum</p>
   </div>
   <div
-    class="bg-background relative flex h-[200px] w-full flex-col items-center justify-center overflow-hidden rounded-lg"
+    class="bg-background relative flex h-50 w-screen flex-col items-center justify-center overflow-hidden mb-5 gap-y-5"
   >
     <Marquee pause-on-hover class="[--duration:20s]">
       <ReviewCard v-for="review in firstRow" :key="review.img" :img="review.img" />
     </Marquee>
 
     <Marquee reverse pause-on-hover class="[--duration:20s]">
-      <ReviewCard v-for="review in firstRow" :key="review.img" :img="review.img" />
+      <ReviewCard v-for="review in secondRow" :key="review.img" :img="review.img" />
     </Marquee>
 
     <div

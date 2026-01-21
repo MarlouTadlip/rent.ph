@@ -7,11 +7,11 @@ import PartnersAndSponsors from '~/components/partnersAndSponsors.vue'
       <Navbar />
     </ClientOnly>
     <Hero />
-    <ClientOnly>
-      <PartnersAndSponsors />
-    </ClientOnly>
     <div class="h-screen w-screen p-8 grid grid-cols-5 gap-y-4 place-items-center">
       <CardListing v-for="_ in new Array(10)"></CardListing>
     </div>
+    <ClientOnly>
+      <PartnersAndSponsors />
+    </ClientOnly>
   </div>
 </template>
