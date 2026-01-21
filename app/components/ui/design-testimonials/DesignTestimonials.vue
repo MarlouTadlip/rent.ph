@@ -91,7 +91,6 @@ const progressHeight = computed(() => `${((activeIndex.value + 1) / testimonials
             :initial="{ opacity: 0, scale: 0.8, filter: 'blur(10px)' }"
             :animate="{ opacity: 0.1, scale: 1, filter: 'blur(0px)' }"
             :exit="{ opacity: 0, scale: 1.1, filter: 'blur(10px)' }"
-            :while-hover="{ opacity: 1 }"
             :transition="{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }"
           >
             <img 
