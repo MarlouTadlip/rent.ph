@@ -13,5 +13,8 @@ import PartnersAndSponsors from '~/components/partnersAndSponsors.vue'
     <ClientOnly>
       <PartnersAndSponsors />
     </ClientOnly>
+    <ClientOnly>
+      <Footer />
+    </ClientOnly>
   </div>
 </template>
