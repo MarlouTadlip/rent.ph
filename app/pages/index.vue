@@ -2,9 +2,19 @@
 <template>
   <div class="w-screen min-h-screen">
     <ClientOnly>
-      <Navbar></Navbar>
+      <Navbar />
     </ClientOnly>
-    <div class="h-screen w-screen"></div>
+    <Hero />
+    <Marquee
+      :items="[
+        'Apartments',
+        'Condos',
+        'Boarding Houses',
+        'Pet Friendly',
+        'Near IT Park',
+        'Budget Rentals',
+      ]"
+    />
     <div class="h-screen w-screen"></div>
   </div>
 </template>
