@@ -2,7 +2,7 @@
 const scrollPosY = ref(0)
 const navbarClass = computed(() => {
   if (scrollPosY.value >= 30)
-    return 'w-11/12 h-4/5 border-2 rounded-full bg-[#7ea8fc]/20 dark:bg-[#205ed7]/20 px-8'
+    return 'w-11/12 h-4/5 border-2 rounded-full bg-[#c5d6f7]/30 dark:bg-[#133982]/30 px-8 backdrop-blur-xs'
   else return 'w-full h-full px-12'
 })
 const ypos = () => {
@@ -42,7 +42,7 @@ const anchors = [
   <div class="fixed top-0 z-100 flex items-center justify-center h-20 w-full">
     <div
       :class="[
-        'transition-all duration-400  flex justify-between items-center py-4 border-[#205ed7]',
+        'transition-all duration-400  flex justify-between items-center py-4 border-[#205ed7]/50',
         navbarClass,
       ]"
     >
@@ -54,7 +54,7 @@ const anchors = [
         <NuxtLink
           v-for="anchor in anchors"
           :to="anchor.link"
-          class="relative group pb-1 font-medium hover:text-[#205ed7] drop-shadow-md dark:drop-shadow-black/20"
+          class="relative group pb-1 font-medium dark:hover:text-[#2b68df] hover:text-[#1b4fb5] drop-shadow-md dark:drop-shadow-black/40"
         >
           {{ anchor.label }}
           <span
