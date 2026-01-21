@@ -2,9 +2,9 @@
 const colorMode = useColorMode()
 const heroBg = computed(() => {
   if (colorMode.preference === 'light') {
-    return ` bg-[linear-gradient(to_top,rgba(255,255,255),transparent_30%),url('/hero.jpg')]`
+    return ` bg-[linear-gradient(to_top,rgba(255,255,255),transparent_15%),url('/hero.jpg')]`
   } else {
-    return `bg-[linear-gradient(to_top,rgba(0,0,0,0.7)_0%,transparent_30%),url('/hero-dark.jpg')]`
+    return `bg-[linear-gradient(to_top,rgba(0,0,0,0.7)_0%,transparent_15%),url('/hero-dark.jpg')]`
   }
 })
 </script>
