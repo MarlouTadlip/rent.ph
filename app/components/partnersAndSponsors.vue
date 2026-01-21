@@ -5,22 +5,22 @@ import ReviewCard from './ui/marquee/ReviewCard.vue'
 
 const reviews = [
   {
-    img: 'https://avatar.vercel.sh/jack',
+    img: 'https://software-finder-prod.blr1.digitaloceanspaces.com/Dev_Rev_34ec11f8f2.png',
   },
   {
-    img: 'https://avatar.vercel.sh/jill',
+    img: 'https://fullscale.ph/wp-content/uploads/2024/02/FS-LOGO-180x100.png',
   },
   {
-    img: 'https://avatar.vercel.sh/john',
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnpJPdFtsokVTZaDGRaEXQK5ewo6jUwVSUqA&s',
   },
   {
-    img: 'https://avatar.vercel.sh/jane',
+    img: 'https://connect-assets.prosple.com/cdn/ff/HQPGVBRwmdkL3kmxsn5sc1g55fEekpm7ulqKfYfj3DA/1695176993/public/2023-09/banner-allliance-1786x642-2023.png',
   },
   {
-    img: 'https://avatar.vercel.sh/jenny',
+    img: 'https://ph.joblum.com/uploads/21/20827.png',
   },
   {
-    img: 'https://avatar.vercel.sh/james',
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKbb6YHjjPZxbuf4hFnFpUv11sh4cH6Fi9tQ&s',
   },
 ]
 
