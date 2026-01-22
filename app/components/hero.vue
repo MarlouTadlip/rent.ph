@@ -9,19 +9,15 @@ const heroBg = computed(() => {
 })
 </script>
 <template>
-  <div
-    :class="[
-      'h-[95vh] bg-top bg-cover w-screen flex flex-col items-center justify-center gap-5',
-      heroBg,
-    ]"
-  >
+  <div :class="[
+    'h-[95vh] bg-top bg-cover w-screen flex flex-col items-center justify-center gap-5',
+    heroBg,
+  ]">
     <div class="text-[#FE8E0A] text-8xl font-black">Rent Your Space</div>
     <div class="text-black/60 dark:text-white/60 text-xl font-medium">
       Discover the perfect property in your ideal location
     </div>
-    <div
-      class="flex bg-[#fafafa] dark:bg-[#212121] p-8 rounded-lg gap-4 border dark:border-gray-800 border-gray-200"
-    >
+    <div class="flex bg-[#fafafa] dark:bg-[#212121] p-8 rounded-lg gap-4 border dark:border-gray-800 border-gray-200">
       <div class="flex flex-col gap-4">
         <Label for="location">Location</Label>
         <Select id="location">
@@ -56,7 +52,7 @@ const heroBg = computed(() => {
         </Select>
       </div>
       <div class="flex h-full items-end">
-        <Button class="gap-2 px-6 py-5">
+        <Button class="gap-2 px-6 h-12">
           <Icon name="lucide:search" class="bg-[#fafafa] dark:bg-[#121212]" />
           Search
         </Button>
