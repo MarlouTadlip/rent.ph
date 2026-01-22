@@ -16,9 +16,9 @@ import Testimonials from '~/components/testimonials.vue'
         <CardListing v-for="_ in new Array(8)" orientation="vertical"></CardListing>
       </div>
     </div>
-    <ClientOnly>
+    <!-- <ClientOnly>
       <PartnersAndSponsors />
-    </ClientOnly>
+    </ClientOnly> -->
     <ClientOnly>
       <Testimonials />
     </ClientOnly>
