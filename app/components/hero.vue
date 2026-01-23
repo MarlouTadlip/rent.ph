@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { gsap } from 'gsap'
+
 const colorMode = useColorMode()
 const heroBg = computed(() => {
   if (colorMode.preference === 'light') {
@@ -7,6 +9,47 @@ const heroBg = computed(() => {
     return `bg-[linear-gradient(to_top,rgba(10,10,10,1)_0%,transparent_25%),url('/hero-dark.jpg')]`
   }
 })
+
+const titleRef = ref<HTMLElement>()
+const subtitleRef = ref<HTMLElement>()
+
+onMounted(() => {
+  const titleElement = titleRef.value
+  const subtitleElement = subtitleRef.value
+  if (!titleElement || !subtitleElement) return
+
+  // Entrance animation for "Rent Your Space"
+  gsap.fromTo(titleElement, 
+    {
+      opacity: 0,
+      y: 50,
+      scale: 0.8
+    },
+    {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      duration: 1.5,
+      ease: 'power3.out',
+      delay: 0.5
+    }
+  )
+
+  // Entrance animation for subtitle
+  gsap.fromTo(subtitleElement, 
+    {
+      opacity: 0,
+      y: 30
+    },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1.2,
+      ease: 'power2.out',
+      delay: 1.0
+    }
+  )
+})
 </script>
 <template>
   <!-- Adjust padding bottom or top to move hero center elements -->
@@ -14,8 +57,8 @@ const heroBg = computed(() => {
     'h-[115vh] bg-top bg-cover w-screen flex flex-col items-center justify-center gap-5 pb-52',
     heroBg,
   ]">
-    <div class="text-[#FE8E0A] text-8xl font-black">Rent Your Space</div>
-    <div class="text-black/60 dark:text-white/60 text-xl font-medium">
+    <div ref="titleRef" class="text-[#FE8E0A] text-8xl font-black">Rent Your Space</div>
+    <div ref="subtitleRef" class="text-black/60 dark:text-white/60 text-xl font-medium">
       Discover the perfect property in your ideal location
     </div>
     <div class="flex bg-[#fafafa] dark:bg-[#212121] p-8 rounded-lg gap-4 border dark:border-gray-800 border-gray-200">
