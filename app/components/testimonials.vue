@@ -42,11 +42,7 @@ const testimonials = [
   <div class="px-12 mt-20">
     <div class="flex flex-col w-full">
       <h1 class="text-4xl font-bold">What Our Clients Say About Us</h1>
-<<<<<<< HEAD
-      <p class="uppercase pt-4 text-gray-500 dark:text-gray-500 ">Testimonials</p>
-=======
       <p class="uppercase pt-4 text-gray-300 dark:text-gray-500">Testimonials</p>
->>>>>>> 4d258d23a360235585fb1d0dcaeaa8d1772b6c5e
     </div>
     <div>
       <DesignTestimonials :testimonials="testimonials" />
