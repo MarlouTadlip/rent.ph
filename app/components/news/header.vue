@@ -2,10 +2,10 @@
 <template>
   <div class="w-screen flex justify-center py-10">
     <div
-      class="h-100 flex w-9/10 rounded-lg shadow-lg overflow-hidden bg-[#fafafa] dark:bg-[#212121] border border-[#e8e8e8]/50 dark:border-[#2e2e2e]"
+      class="flex w-9/10 rounded-lg shadow-lg overflow-hidden bg-[#fafafa] dark:bg-[#212121] border border-[#e8e8e8]/50 dark:border-[#2e2e2e]"
     >
       <div class="h-full aspect-square bg-[url('/blog-header.jpg')] bg-cover"></div>
-      <div class="h-full w-full p-8 flex flex-col gap-4">
+      <div class="w-full p-8 flex flex-col gap-4">
         <div class="flex gap-6">
           <div class="flex items-start gap-2">
             <Icon name="radix-icons:calendar" class="size-5" /> <span>Jan 23, 2026</span>
@@ -15,12 +15,12 @@
             <Icon name="radix-icons:eye-open" class="size-5" /> <span>160 views</span>
           </div>
         </div>
-        <div class="text-4xl font-bold">
+        <div class="2xl:text-4xl xl:text-2xl font-bold">
           How Much Rent Can You Really Afford in 2026? A Practical Budgeting Guide for Filipino
           Renters
         </div>
-        <div class="flex flex-col">
-          <div class="leading-8">
+        <div>
+          <div class="leading-8 2xl:text-base xl:text-xs">
             Renting in 2026 is about more than just a monthly fee—it’s about peace of mind. From
             rising utility costs to the need for a home office, your budget needs to work harder
             than ever. We’ve broken down the ultimate 2026 Rent Affordability Guide to help you find
@@ -34,7 +34,7 @@
         <div class="flex items-center gap-2">
           <Button variant="link" class="p-0">
             <span class="text-[#205ed7] dark:text-[#0454A1]">Read More</span>
-            <Icon name="radix-icons:arrow-right bg-[#205ed7] dark:bg-[#0454A1]" />
+            <Icon name="radix-icons:arrow-right" class="bg-[#205ed7] dark:bg-[#0454A1]" />
           </Button>
         </div>
       </div>
