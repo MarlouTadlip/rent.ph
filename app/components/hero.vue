@@ -45,7 +45,7 @@ onMounted(() => {
     {
       opacity: 1,
       y: 0,
-      duration: 1.2,
+      duration: 3,
       ease: 'power2.out',
       delay: 0.5,
     },
