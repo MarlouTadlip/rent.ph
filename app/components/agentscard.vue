@@ -18,8 +18,8 @@ const heartActive = ref(props.heartActive)
             hover:shadow-2xl hover:-translate-y-1
             transition-all duration-300 overflow-hidden border border-gray-200 dark:border-zinc-800">
 
-        <div class="h-[70%] w-full relative bg-[#fafafa] dark:bg-zinc-900 overflow-hidden">
-            <div class="absolute inset-0 bg-[url('/rebecca.png')] bg-cover bg-no-repeat bg-center z-0"></div>
+        <div class="h-[60%] w-full relative bg-[#fafafa] dark:bg-zinc-900 overflow-hidden">
+            <div class="absolute inset-0 bg-[url('/rebecca.png')] rounded-lg bg-cover bg-no-repeat bg-center z-0"></div>
 
             <button @click.stop="heartActive = !heartActive"
                 class="absolute top-4 right-4 size-10 bg-white/90 dark:bg-[#2e2e2e]/90 backdrop-blur-md rounded-full flex justify-center items-center active:scale-95 hover:scale-105 transition-transform duration-200 z-10 shadow-sm">
@@ -32,38 +32,41 @@ const heartActive = ref(props.heartActive)
                 613 Listings
             </span>
         </div>
-
-        <div class="h-[30%] w-full flex p-4 flex-col justify-between bg-white dark:bg-[#1e1e1e]">
-            <div class="flex flex-col gap-1">
-                <div class="text-xl font-bold text-black dark:text-white">
+        <div class="h-[40%] w-full flex p-4 flex-col justify-between bg-white dark:bg-[#1e1e1e]">
+            <div class="flex flex-col gap-2">
+                <div class="text-xl font-bold text-black dark:text-gray-200">
                     Rebecca Ferguson
                 </div>
-                <div class="text-sm w-full gap-2 font-normal text-gray-500 dark:text-gray-400">
+
+                <div class="flex flex-col gap-1.5 text-sm font-normal text-gray-500 dark:text-gray-400">
                     <div class="flex items-center gap-2">
-                        <Icon name="radix-icons:mobile" />
-                        +63 123 2345 678
+                        <Icon name="lucide:phone" class="size-4 shrink-0" />
+                        <span>+63 123 2345 678</span>
                     </div>
+
                     <div class="flex items-center gap-2">
-                        <Icon name="radix-icons:envelope-closed" />
-                        rentsample@gmail.com
+                        <Icon name="lucide:mail" class="size-4 shrink-0" />
+                        <span class="truncate">rentsample@gmail.com</span>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <Icon name="lucide:map-pin" class="size-4 shrink-0" />
+                        <span>123 Oak Street, Downtown</span>
                     </div>
                 </div>
-                <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
-                    <Icon name="radix-icons:map-pin" />
-                    123 Oak Street, Downtown
-                </div>
+
                 <div class="flex gap-2 items-center mt-1">
-                    <div class="flex gap-0.5">
-                        <Icon v-for="(_, index) in 5" :key="index" name="radix-icons:star-filled"
-                            class="text-yellow-500 size-3.5" />
+                    <div class="flex gap-0.5 text-[#fe8e0a]">
+                        Rent Manager Pro
                     </div>
                     <span class="text-[10px] text-gray-400 font-medium">(5 • 12 Reviews)</span>
                 </div>
             </div>
 
-            <div class="flex justify-end border-t border-gray-100 dark:border-zinc-800 pt-2">
-                <Button variant="link" class="p-0 h-auto text-[#205ed7] dark:text-[#3b82f6] font-bold text-sm">View
-                    Listings</Button>
+            <div class="flex justify-end border-t border-gray-100 dark:border-zinc-800 pt-2 mt-2">
+                <Button variant="link" class="p-0 h-auto text-[#205ed7] dark:text-[#3b82f6] text-sm">
+                    View Listings
+                </Button>
             </div>
         </div>
     </div>
