@@ -31,32 +31,48 @@
                             <Icon name="ic:baseline-whatsapp" class="size-8 text-green-500"/>
                         </div>
                     </div>
-                        <div class="flex flex-col shadow-lg border border-gray-500/10 rounded-3xl p-15 w-1/2 gap-5">
+                        <div class="flex flex-col shadow-lg border border-gray-500/10 rounded-3xl p-15 pb-5 w-1/2 gap-5">
                             <div class="flex justify-between">
-                                <Input
-                                    name="keyword"
-                                    class="w-19/40 py-2 pl-3 border border-dark-100 rounded-md text-sm h-10.5"
-                                    placeholder="Name"
-                                />
-                                <Input
-                                    name="keyword"
-                                    class="w-19/40 py-2 pl-3 border border-dark-100 rounded-md text-sm h-10.5"
-                                    placeholder="Email"
-                                />
+                                <div class="flex flex-col w-1/2">
+                                    <label for="Name">Name</label>
+                                    <Input
+                                        name="keyword"
+                                        class="w-19/20 py-2 pl-3 border border-dark-100 rounded-xl text-sm h-10.5"
+                                        placeholder="Name"
+                                    />
+                                </div>
+                                <div class="flex flex-col w-1/2">
+                                    <label for="Email">Email</label>
+                                    <Input
+                                        name="keyword"
+                                        class="py-2 pl-3 border border-dark-100 rounded-xl text-sm h-10.5"
+                                        placeholder="Email"
+                                    />
+                                </div>
                             </div>
                             <div class="flex justify-between">
-                                <Input
-                                    name="keyword"
-                                    class="w-19/40 py-2 pl-3 border border-dark-100 rounded-md text-sm h-10.5"
-                                    placeholder="Phone"
-                                />
-                                <Input
-                                    name="keyword"
-                                    class="w-19/40 py-2 pl-3 border border-dark-100 rounded-md text-sm h-10.5"
-                                    placeholder="Sbject"
-                                />
+                                <div class="flex flex-col w-1/2">
+                                    <label for="Contact">Contact</label>
+                                    <Input
+                                        name="keyword"
+                                        class="w-19/20 py-2 pl-3 border border-dark-100 rounded-xl text-sm h-10.5"
+                                        placeholder="Contact"
+                                    />
+                                </div>
+                                <div class="flex flex-col w-1/2">
+                                    <label for="Subject">Subject</label>
+                                    <Input
+                                        name="keyword"
+                                        class="py-2 pl-3 border border-dark-100 rounded-xl text-sm h-10.5"
+                                        placeholder="Subject"
+                                    />
+                                </div>
                             </div>
-                            <textarea name="keyword" id="" rows="4" autoresize class="w-full py-2 pl-3 border border-dark-100 rounded-md text-sm" placeholder="Your Message" />
+                            <div class="flex flex-col">
+                                <label for="">How can we help you?</label>
+                                <textarea name="keyword" id="" rows="12" autoresize class="w-full py-2 pl-3 border border-dark-100 rounded-xl text-sm" placeholder="Your Message" />
+                            </div>
+                            <button class="border rounded-3xl max-w-fit px-5 py-3 place-self-center">Send Message</button>
                         </div>
                 </div>
         </div>
