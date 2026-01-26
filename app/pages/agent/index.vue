@@ -1,8 +1,6 @@
-    <script setup lang="ts">
-    import navbar from '~/components/navbar.vue'
-    import pagination from '~/components/pagination.vue'
-    import agentscard from '~/components/agentscard.vue'
-    import { number } from 'motion-v'
+<script setup lang="ts">
+
+import { number } from 'motion-v'
     const currentPage = ref(1)
     const totalPages = ref(10)
 
@@ -85,11 +83,8 @@
                 </ClientOnly>
 
                 <div class="mt-12 flex flex-wrap gap-4 gap-y-5 justify-center">
-                    <agentscard v-for="manager in managers" 
-                    :key="manager.id" 
-                    v-bind="manager"
-                    orientation="vertical"
-                    class="w-[calc(25%-1rem)]" />
+                    <agentscard v-for="manager in managers" :key="manager.id" v-bind="manager" orientation="vertical"
+                        class="w-[calc(25%-1rem)]" />
                 </div>
 
                 <div class="flex justify-center mt-12">

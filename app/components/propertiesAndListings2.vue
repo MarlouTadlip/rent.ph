@@ -4,7 +4,7 @@ import cardListingPropertiesPage from './cardListingPropertiesPage.vue'
 
 </script>
 <template>
-  <div class="px-12 flex flex-col mt-15 max-w-full mx-auto">
+  <div class="px-12 flex flex-col mt-15 max-w-[98%] mx-auto">
     
     <PropertyCarousel 
       title="Popular Listings" 
