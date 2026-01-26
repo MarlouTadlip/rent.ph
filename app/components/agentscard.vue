@@ -1,4 +1,11 @@
 <script setup lang="ts">
+
+interface ReviewItem{
+    user: string
+    comment: string
+    rating: number
+}
+
 interface Props {
     id: string | number
     phone: number
@@ -8,6 +15,8 @@ interface Props {
     location: string
     status: string
     reviews: string
+    about: string
+    reviewList: ReviewItem[]
     heartActive?: boolean
     orientation?: string
 }
@@ -29,7 +38,8 @@ const goToProfile = () => {
             photo: props.photo,
             location: props.location,
             status: props.status,
-            reviews: props.reviews
+            about:props.about,
+            reviewList:JSON.stringify(props.reviewList)
         }
     })
 }
