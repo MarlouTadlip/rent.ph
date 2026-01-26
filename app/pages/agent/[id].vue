@@ -2,7 +2,7 @@
 const route = useRoute()
 const { id } = route.params
 // Get the passed data from query params
-const { name, phone, email, photo, location, status } = route.query
+const { name, phone, email, photo, location, status, reviews } = route.query
 
 const goBack = () => {
   navigateTo('/agent')
@@ -15,7 +15,7 @@ const goBack = () => {
     <Navbar />
   </ClientOnly>
   <div class="container mx-auto px-10 pt-10 pb-20">
-    <div class="flex w-full justify-end" >
+    <div class="flex w-full justify-end">
       <button @click="goBack"
         class="group flex mt-10 items-center rounded-full gap-2 cursor-pointer mb-8 text-gray-500 hover:text-[#205ed7] transition-colors duration-200">
         <div
@@ -55,6 +55,10 @@ const goBack = () => {
           <div class="flex items-center gap-3">
             <Icon name="lucide:fingerprint" class="text-[#205ed7]" />
             <span>Agent ID: {{ id }}</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <Icon v-for="_ in 5" name="radix-icons:star-filled" class="size-3.5 text-yellow-500" />
+            <span>{{ reviews }}</span>
           </div>
         </div>
 

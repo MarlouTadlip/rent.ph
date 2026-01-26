@@ -18,17 +18,19 @@ const managers = [
         email: 'rebecca@rent.com',
         photo: '/rebecca.png',
         location: 'Downtown, Oak Street',
-        status: '613 Listings'
+        status: '613 Listings',
+        reviews: '5 • 12 Reviews',
     },
     {
         id: 2,
         phone: 123456789,
-
         name: 'Tom Cruise',
         email: 'tom@rent.com',
         photo: '/img.png',
         location: 'Manila, PH',
-        status: '120 Listings'
+        status: '120 Listings',
+        reviews: '5 • 12 Reviews',
+
     },
     {
         id: 3,
@@ -37,7 +39,9 @@ const managers = [
         email: 'henry@rent.com',
         photo: '/javie-gemini.png',
         location: 'Cebu City',
-        status: '45 Listings'
+        status: '45 Listings',
+        reviews: '5 • 12 Reviews',
+
     },
     {
         id: 4,
@@ -46,7 +50,9 @@ const managers = [
         email: 'simon@rent.com',
         photo: '/elaine-gemini.png',
         location: 'Davao City',
-        status: '12 Listings'
+        status: '12 Listings',
+        reviews: '5 • 12 Reviews',
+
     },
 ]
 </script>
