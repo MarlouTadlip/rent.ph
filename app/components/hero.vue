@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { gsap } from 'gsap'
 import RadiantText from '~/components/ui/radiant-text/RadiantText.vue'
+import { useGSAPStore } from '~/stores/gsapStore'
 
 const colorMode = useColorMode()
 const heroBg = computed(() => {
@@ -16,53 +17,57 @@ const subtitleRef = ref<HTMLElement>()
 const searchRef = ref<HTMLElement>()
 
 onMounted(() => {
-  const titleElement = titleRef.value
-  const subtitleElement = subtitleRef.value
-  const searchElement = searchRef.value
-  if (!titleElement || !subtitleElement || !searchElement) return
+  const { isFirstLoad, setIsFirstLoad } = useGSAPStore()
+  if (isFirstLoad) {
+    const titleElement = titleRef.value
+    const subtitleElement = subtitleRef.value
+    const searchElement = searchRef.value
+    if (!titleElement || !subtitleElement || !searchElement) return
 
-  gsap.fromTo(
-    titleElement,
-    {
-      opacity: 0,
-      y: 15,
-    },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 1.5,
-      ease: 'power3.out',
-      delay: 2,
-    },
-  )
-  gsap.fromTo(
-    subtitleElement,
-    {
-      opacity: 0,
-      y: 15,
-    },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 3,
-      ease: 'power2.out',
-      delay: 2.25,
-    },
-  )
-  gsap.fromTo(
-    searchElement,
-    {
-      opacity: 0,
-      y: 15,
-    },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 1.2,
-      ease: 'power2.out',
-      delay: 2.5,
-    },
-  )
+    gsap.fromTo(
+      titleElement,
+      {
+        opacity: 0,
+        y: 15,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.5,
+        ease: 'power3.out',
+        delay: 2,
+      },
+    )
+    gsap.fromTo(
+      subtitleElement,
+      {
+        opacity: 0,
+        y: 15,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 3,
+        ease: 'power2.out',
+        delay: 2.25,
+      },
+    )
+    gsap.fromTo(
+      searchElement,
+      {
+        opacity: 0,
+        y: 15,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        ease: 'power2.out',
+        delay: 2.5,
+      },
+    )
+    setIsFirstLoad(false)
+  }
 })
 </script>
 <template>
