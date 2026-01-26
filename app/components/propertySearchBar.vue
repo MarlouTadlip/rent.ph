@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 <template>
   <div
-    class="flex flex-col md:flex-row bg-[#fafafa] dark:bg-[#212121] p-4 md:p-6 rounded-lg gap-4 border dark:border-gray-800 border-gray-200 drop-shadow-md w-full max-w-8xl mx-auto"
+    class="flex flex-col md:flex-row bg-white dark:bg-[#212121] p-4 md:p-6 rounded-lg gap-4 border dark:border-gray-800 border-gray-200 drop-shadow-md w-full max-w-8xl mx-auto"
   >
     <div class="flex flex-col gap-2 md:gap-4 flex-1">
       <Label for="location" class="text-sm md:text-base">Keyword</Label>
@@ -63,7 +63,7 @@
 
     <div class="flex h-full items-end">
       <Button class="gap-2 px-4 md:px-6 h-10 md:h-12 w-full md:w-auto">
-        <Icon name="lucide:search" class="bg-[#fafafa] dark:bg-[#121212]" />
+        <Icon name="lucide:search" class="bg-white dark:bg-[#121212]" />
         <span class="text-sm md:text-base">Search</span>
       </Button>
     </div>
