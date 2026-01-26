@@ -7,6 +7,7 @@ interface Props {
     photo: string
     location: string
     status: string
+    reviews: string
     heartActive?: boolean
     orientation?: string
 }
@@ -27,7 +28,8 @@ const goToProfile = () => {
             email: props.email,
             photo: props.photo,
             location: props.location,
-            status: props.status
+            status: props.status,
+            reviews: props.reviews
         }
     })
 }
@@ -69,6 +71,7 @@ const goToProfile = () => {
                     </div>
                     <div class="flex items-center gap-2">
                         <Icon v-for="_ in 5" name="radix-icons:star-filled" class="size-3.5 text-yellow-500" />
+                        <span class="text-[10px] text-[#262626]/80 dark:text-[#e8e8e8]/60">{{ reviews }}</span>
 
                     </div>
                 </div>
