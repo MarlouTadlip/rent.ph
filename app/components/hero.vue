@@ -95,7 +95,7 @@ onMounted(() => {
     </div>
     <div
       ref="searchRef"
-      class="flex flex-col md:flex-row bg-[#fafafa] dark:bg-[#212121] mt-8 md:mt-12 p-4 md:p-8 rounded-lg gap-4 border dark:border-gray-800 border-gray-200 w-full max-w-4xl mx-auto"
+      class="flex flex-col md:flex-row bg-white dark:bg-[#212121] mt-8 md:mt-12 p-4 md:p-8 rounded-lg gap-4 border dark:border-gray-800 border-gray-200 w-full max-w-4xl mx-auto"
     >
       <div class="flex flex-col gap-2 md:gap-4 flex-1">
         <Label for="location" class="text-sm md:text-base">Location</Label>
@@ -132,7 +132,7 @@ onMounted(() => {
       </div>
       <div class="flex h-full items-end">
         <Button class="gap-2 px-4 md:px-6 h-10 md:h-12 w-full md:w-auto">
-          <Icon name="lucide:search" class="bg-[#121212] dark:bg-[#fafafa]" />
+          <Icon name="lucide:search" class="bg-[#121212] dark:bg-white" />
           <span class="text-sm md:text-base text-[#121212] dark:text-[#fafafa]">Search</span>
         </Button>
       </div>
