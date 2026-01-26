@@ -6,23 +6,35 @@
     </div>
 
     <!-- Leaderboard Cards -->
-    <div class="grid md:grid-cols-3 gap-8 mt-10">
+    <div class="flex flex-col md:flex-row gap-6 md:gap-12 mt-10 max-w-7xl mx-auto items-center md:items-start justify-center">
       <!-- Agent Card -->
       <div
         v-for="agent in topAgents"
         :key="agent.rank"
         ref="cardsRef"
-        class="relative"
-        :class="agent.rank === 1 ? 'md:order-2' : agent.rank === 2 ? 'md:order-1' : 'md:order-3'"
+        class="relative w-full max-w-sm md:flex-shrink-0"
+        :class="[
+          agent.rank === 2 ? 'md:order-1 md:mt-8' : agent.rank === 1 ? 'md:order-2' : 'md:order-3 md:mt-8',
+          agent.rank === 1 ? 'scale-105 md:scale-110' : 'scale-100'
+        ]"
       >
         <div
-          class="relative bg-white dark:bg-[#2e2e2e] rounded-2xl overflow-hidden border transition-all duration-300 hover:scale-[1.02]"
-          :class="[getBadgeConfig(agent.rank).border, agent.rank === 1 ? 'md:-mt-4' : '']"
+          class="relative rounded-2xl cursor-pointer w-full h-96 md:w-80 md:h-100 flex flex-col bg-[#fafafa] dark:bg-[#1e1e1e] shadow-lg transition-all duration-300 hover:scale-[1.02]"
+          :class="[
+            agent.rank === 1 ? 'shadow-2xl' : 
+            agent.rank === 2 ? 'shadow-xl' : 
+            'shadow-lg'
+          ]"
         >
-          <!-- Rank Badge Header -->
-          <div class="relative h-28 bg-gradient-to-br" :class="getBadgeConfig(agent.rank).gradient">
+          <!-- Portrait Image Section -->
+          <div class="h-3/5 w-full relative rounded-t-2xl overflow-hidden">
+            <div :style="{ backgroundImage: `url(${agent.avatar})` }"
+              class="absolute inset-0 bg-cover bg-center object-cover"></div>
+
+            <!-- Rank Badge Icon -->
             <div
-              class="absolute top-4 right-4 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center"
+              class="absolute top-4 right-4 w-12 h-12 rounded-full flex items-center justify-center shadow-lg"
+              :class="getBadgeConfig(agent.rank).bgColor"
             >
               <Icon
                 :name="getBadgeConfig(agent.rank).icon"
@@ -30,104 +42,44 @@
                 :class="getBadgeConfig(agent.rank).iconColor"
               />
             </div>
+
+            <!-- Rank Badge Label -->
+            <span
+              class="absolute top-0 left-0 py-1.5 px-4 text-sm text-[#fafafa] rounded-tl-2xl rounded-br-2xl shadow-sm"
+              :class="[
+                agent.rank === 1 ? 'bg-yellow-500' :
+                agent.rank === 2 ? 'bg-gray-500' :
+                agent.rank === 3 ? 'bg-amber-600' :
+                'bg-blue-500'
+              ]"
+            >
+              #{{ agent.rank }}
+            </span>
           </div>
 
-          <!-- Avatar -->
-          <div class="relative px-6 -mt-16 pb-6">
-            <div class="relative mx-auto w-32 h-32">
-              <div
-                class="absolute inset-0 bg-gradient-to-br rounded-full blur-sm opacity-50"
-                :class="getBadgeConfig(agent.rank).gradient"
-              ></div>
-              <img
-                :src="agent.avatar"
-                :alt="agent.name"
-                class="relative w-full h-full rounded-full border-4 border-white dark:border-[#2e2e2e] object-cover shadow-xl"
-              />
-              <div
-                class="absolute -bottom-2 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-white text-sm font-bold shadow-lg bg-gradient-to-r"
-                :class="getBadgeConfig(agent.rank).gradient"
-              >
-                #{{ agent.rank }}
+          <!-- Simple Content Section -->
+          <div class="h-2/5 w-full flex p-4 flex-col justify-between bg-white dark:bg-[#1e1e1e] rounded-b-2xl">
+            <div class="text-lg font-medium text-[#262626] dark:text-[#e8e8e8]/80 text-center">{{ agent.name }}</div>
+            <div class="flex justify-between items-center">
+              <div class="text-sm font-normal text-[#262626]/80 dark:text-[#e8e8e8]/60">{{ agent.listings }} Listings</div>
+              <div class="flex gap-1 items-center">
+                <Icon v-for="_ in 5" name="radix-icons:star-filled" class="size-3 text-yellow-500" />
               </div>
             </div>
-
-            <!-- Agent Info -->
-            <div class="text-center mt-6 mb-4">
-              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-1">
-                {{ agent.name }}
-              </h3>
-              <div
-                class="inline-flex items-center gap-2 px-3 py-1 bg-gray-100 dark:bg-zinc-800 rounded-full"
-              >
-                <div
-                  class="w-2 h-2 rounded-full bg-gradient-to-r"
-                  :class="getBadgeConfig(agent.rank).gradient"
-                ></div>
-                <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">
-                  {{ agent.listings }} Active Listings
-                </span>
+            <div class="flex flex-col gap-1 text-xs text-[#262626]/60 dark:text-[#e8e8e8]/50">
+              <div class="flex items-center gap-1">
+                <Icon name="lucide:phone" class="size-3" />
+                <span>{{ agent.phone }}</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <Icon name="lucide:mail" class="size-3" />
+                <span>{{ agent.email }}</span>
+              </div>
+              <div class="flex items-center gap-1">
+                <Icon name="lucide:map-pin" class="size-3" />
+                <span>{{ agent.location }}</span>
               </div>
             </div>
-
-            <!-- Contact Info -->
-            <div class="space-y-3 mb-4">
-              <a
-                :href="`tel:${agent.phone}`"
-                class="flex items-center gap-3 px-4 py-2 bg-gray-50 dark:bg-zinc-800/50 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors group"
-              >
-                <div
-                  class="w-8 h-8 rounded-lg bg-gradient-to-br flex items-center justify-center"
-                  :class="getBadgeConfig(agent.rank).gradient"
-                >
-                  <Icon name="lucide:phone" class="w-4 h-4 text-white" />
-                </div>
-                <span
-                  class="text-sm text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-200"
-                >
-                  {{ agent.phone }}
-                </span>
-              </a>
-
-              <a
-                :href="`mailto:${agent.email}`"
-                class="flex items-center gap-3 px-4 py-2 bg-gray-50 dark:bg-zinc-800/50 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors group"
-              >
-                <div
-                  class="w-8 h-8 rounded-lg bg-gradient-to-br flex items-center justify-center"
-                  :class="getBadgeConfig(agent.rank).gradient"
-                >
-                  <Icon name="lucide:mail" class="w-4 h-4 text-white" />
-                </div>
-                <span
-                  class="text-sm text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-gray-200 truncate"
-                >
-                  {{ agent.email }}
-                </span>
-              </a>
-
-              <div
-                class="flex items-center gap-3 px-4 py-2 bg-gray-50 dark:bg-zinc-800/50 rounded-lg"
-              >
-                <div
-                  class="w-8 h-8 rounded-lg bg-gradient-to-br flex items-center justify-center"
-                  :class="getBadgeConfig(agent.rank).gradient"
-                >
-                  <Icon name="lucide:map-pin" class="w-4 h-4 text-white" />
-                </div>
-                <span class="text-sm text-gray-600 dark:text-gray-400">
-                  {{ agent.location }}
-                </span>
-              </div>
-            </div>
-
-            <!-- CTA Button -->
-            <button
-              class="w-full py-3 rounded-lg font-semibold text-white transition-all hover:shadow-lg bg-gradient-to-r"
-              :class="getBadgeConfig(agent.rank).gradient"
-            >
-              View Listings
-            </button>
           </div>
         </div>
       </div>
@@ -144,6 +96,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 const headerRef = ref<HTMLElement | null>(null)
 const cardsRef = ref<HTMLElement[]>([])
+const heartActive = ref(false)
 
 // Sample data - replace with your actual agent data from API/props
 const topAgents = ref([
@@ -179,35 +132,38 @@ const topAgents = ref([
 const getBadgeConfig = (
   rank: number,
 ): {
-  gradient: string
+  label: string
   icon: string
-  border: string
+  bgColor: string
   iconColor: string
 } => {
-  const defaultConfig = {
-    gradient: 'from-orange-600 via-orange-700 to-orange-800',
-    icon: 'lucide:trophy',
-    border: 'border-orange-200 dark:border-orange-900/30',
-    iconColor: 'text-orange-100',
-  }
-
-  const configs: Record<number, typeof defaultConfig> = {
+  const configs: Record<number, { label: string; icon: string; bgColor: string; iconColor: string }> = {
     1: {
-      gradient: 'from-amber-500 via-yellow-600 to-amber-700',
+      label: 'Top Agent',
       icon: 'lucide:crown',
-      border: 'border-amber-200 dark:border-amber-900/30',
-      iconColor: 'text-amber-100',
+      bgColor: 'bg-yellow-500',
+      iconColor: 'text-yellow-100',
     },
     2: {
-      gradient: 'from-slate-400 via-slate-500 to-slate-600',
+      label: 'Star Agent',
       icon: 'lucide:medal',
-      border: 'border-slate-200 dark:border-slate-700',
-      iconColor: 'text-slate-100',
+      bgColor: 'bg-gray-500',
+      iconColor: 'text-gray-100',
     },
-    3: defaultConfig,
+    3: {
+      label: 'Rising Star',
+      icon: 'lucide:trophy',
+      bgColor: 'bg-amber-600',
+      iconColor: 'text-amber-100',
+    },
   }
 
-  return configs[rank] || defaultConfig
+  return configs[rank] || { 
+    label: 'Agent', 
+    icon: 'lucide:award',
+    bgColor: 'bg-blue-500',
+    iconColor: 'text-blue-100'
+  }
 }
 
 onMounted(() => {
