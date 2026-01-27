@@ -37,6 +37,25 @@ const truncate = (string: string) => {
           }}
         </div>
       </div>
+      <div class="flex flex-row items-center">
+          <div class="flex flex-row items-center gap-2 justify-start w-1/2">
+              <div class="pt-1 pr-2 pl-2 bg-blue-500 rounded-sm">
+                <Icon name="lucide:facebook" class="text-white"/>
+              </div>
+              <div class="pt-1 pr-2 pl-2 bg-pink-500 rounded-sm">
+                <Icon name="lucide:instagram" class="text-white"/>
+              </div>
+              <div class="pt-1 pr-2 pl-2 bg-green-500 rounded-sm">
+                <Icon name="ic:baseline-whatsapp" class="text-white"/>
+              </div>
+              <div class="pt-1 pr-2 pl-2 bg-red-500 rounded-sm">
+                <Icon name="lucide:mail" class="text-white"/>
+              </div>
+              <div class="pt-1 pr-2 pl-2 bg-gray-500 rounded-sm">
+                <Icon name="lucide:link" class="text-white"/>
+              </div>
+          </div>
+        </div>
     </div>
   </div>
 </template>

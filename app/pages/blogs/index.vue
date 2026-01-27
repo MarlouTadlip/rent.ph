@@ -1,4 +1,5 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
 <template>
   <div class="w-screen min-h-screen">
     <ClientOnly>
