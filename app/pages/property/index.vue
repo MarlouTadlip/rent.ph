@@ -91,7 +91,7 @@ onMounted(() => {
               <template v-for="(listings, category, index) in categories" :key="category">
                 <div class="flex justify-between mt-5">
                   <a href="#" class="text-sm text-gray-600 dark:text-white hover:text-blue-600 transition-colors">
-                    <Icon name="material-symbols:arrow-right dark:text-white"/> {{ category }} 
+                    {{ category }} 
                   </a>
                   <a href="#" class="text-sm text-gray-600 dark:text-white hover:text-blue-600 transition-colors">
                     {{ listings }} Properties
