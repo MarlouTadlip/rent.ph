@@ -15,6 +15,7 @@ export interface PropertyResponse<T> {
 
 export interface Property {
   id: number
+  slug: string
   title: string
   image: string
   price: string

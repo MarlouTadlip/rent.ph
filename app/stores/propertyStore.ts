@@ -23,6 +23,20 @@ export const usePropertyStore = defineStore('property', () => {
     }
   }
 
+  const getPropertyBySlug = async (slug: string) => {
+    loading.value = true
+    try {
+      const res = await fetch(`${BASE_URL}/properties/slug/${slug}`)
+      if (!res.ok) throw new Error(`Failed to fetch property by slug: ${res.statusText}`)
+      const json: PropertyResponse<Property> = await res.json()
+      property.value = json.data
+    } catch (err) {
+      console.error(err)
+    } finally {
+      loading.value = false
+    }
+  }
+
   const getProperties = async (
     page: string | number = 1,
     numberPerPage: string | number = 10,
@@ -48,6 +62,7 @@ export const usePropertyStore = defineStore('property', () => {
     property,
     pagination,
     getProperty,
+    getPropertyBySlug,
     getProperties,
     loading,
   }

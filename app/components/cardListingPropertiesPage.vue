@@ -1,36 +1,20 @@
 <script setup lang="ts">
-interface Property {
-  id: number
-  title: string
-  image: string
-  price: string
-  bed: number
-  bathroom: number
-  square: number
-  address: string
-  user_name: string
-  user_avatar?: string
-  agent_title: string
-  agent_phone: string
-  agent_email: string
-}
+
 
 interface Props {
   id: string | number
+  slug?: string
   title?: string
   type?: string
-  photo?: string
   image?: string
   name?: string
   price: number | string
-  location?: string
   address?: string
   agent?: string
   user_name?: string
   reviews?: string
   agentphoto?: string
   user_avatar?: string
-  specifications?: any[]
   bed?: number
   bathroom?: number
   square?: number
@@ -45,42 +29,25 @@ const props = withDefaults(defineProps<Props>(), {
 
 const heartActive = ref(props.heartActive)
 
-const propertyTitle = computed(() => props.title || props.name || 'Property')
-const propertyImage = computed(() => props.image || props.photo || '/img.png')
-const propertyLocation = computed(() => props.address || props.location || 'Location not available')
+const propertyTitle = computed(() => props.title || 'Property')
+const propertyImage = computed(() => props.image  || '/img.png')
+const propertyLocation = computed(() => props.address || 'Location not available')
 const propertyAgent = computed(() => props.user_name || props.agent || 'Agent')
 const propertyAgentPhoto = computed(() => props.user_avatar || props.agentphoto || '/img.png')
+const propertyBedroom = computed(() => props.bed || '0' )
+const propertyBathroom = computed(() => props.bathroom || '0' )
+const propertySize = computed(() => props.square ||'0' )
+
 const propertyType = computed(() => {
   if (props.type) return props.type
   if (props.bed && props.bed > 0) return 'House And Lot'
   return 'Commercial Space'
 })
-const propertySpecs = computed(() => {
-  if (props.specifications && props.specifications.length > 0) {
-    return props.specifications[0]
-  }
-  return {
-    bedrooms: props.bed || 0,
-    bathroom: props.bathroom || 0,
-    size: props.square || 0,
-  }
-})
+
 
 const goToProperty = () => {
-  navigateTo({
-    path: `/property/${props.id}`,
-    query: {
-      name: propertyTitle.value,
-      type: propertyType.value,
-      photo: propertyImage.value,
-      price: props.price,
-      agent: propertyAgent.value,
-      agentphoto: propertyAgentPhoto.value,
-      location: propertyLocation.value,
-      reviews: props.reviews || '5 • 12 Reviews',
-      specs: JSON.stringify(propertySpecs.value),
-    },
-  })
+  const routeSlug = props.slug || props.id.toString()
+  navigateTo(`/property/${routeSlug}`)
 }
 </script>
 
@@ -121,14 +88,14 @@ const goToProperty = () => {
       </div>
 
       <div class="flex items-center gap-2 text-[10px] text-gray-500 dark:text-gray-400 mt-1">
-        <div v-if="propertySpecs.bedrooms" class="flex items-center gap-0.5">
-          <Icon name="radix-icons:dashboard" class="size-3" /> {{ propertySpecs.bedrooms }}
+        <div  class="flex items-center gap-0.5">
+          <Icon name="radix-icons:dashboard" class="size-3" /> {{ propertyBedroom }}
         </div>
-        <div v-if="propertySpecs.bathroom" class="flex items-center gap-0.5">
-          <Icon name="lucide:bath" class="size-3" /> {{ propertySpecs.bathroom }}
+        <div  class="flex items-center gap-0.5">
+          <Icon name="lucide:bath" class="size-3" /> {{ propertyBathroom }}
         </div>
-        <div v-if="propertySpecs.size" class="flex items-center gap-0.5">
-          <Icon name="lucide:ruler-dimension-line" class="size-3" /> {{ propertySpecs.size }} sqft
+        <div class="flex items-center gap-0.5">
+          <Icon name="lucide:ruler-dimension-line" class="size-3" /> {{ propertySize }} sqft
         </div>
       </div>
 
