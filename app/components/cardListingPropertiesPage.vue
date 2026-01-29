@@ -3,6 +3,7 @@
 
 interface Props {
   id: string | number
+  slug?: string
   title?: string
   type?: string
   image?: string
@@ -45,22 +46,8 @@ const propertyType = computed(() => {
 
 
 const goToProperty = () => {
-  navigateTo({
-    path: `/property/${props.id}`,
-    query: {
-      name: propertyTitle.value,
-      type: propertyType.value,
-      photo: propertyImage.value,
-      price: props.price,
-      agent: propertyAgent.value,
-      agentphoto: propertyAgentPhoto.value,
-      bed: propertyBedroom.value,
-      bathroom: propertyBathroom.value,
-      size: propertySize.value,
-      location: propertyLocation.value,
-      reviews: props.reviews || '5 • 12 Reviews',
-    },
-  })
+  const routeSlug = props.slug || props.id.toString()
+  navigateTo(`/property/${routeSlug}`)
 }
 </script>
 
