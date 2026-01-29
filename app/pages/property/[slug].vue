@@ -68,7 +68,7 @@ const goBack = () => navigateTo('/property')
   <Transition name="fade">
     <div
       v-if="isExpanded"
-      class="fixed inset-0 z-[100] bg-black/80 backdrop-blur-md flex items-center justify-center p-4"
+      class="fixed inset-0 z-100 bg-black/80 backdrop-blur-md flex items-center justify-center p-4"
       @click="closeExpand"
     >
       <button class="absolute top-8 right-8 text-white/70 hover:text-white transition-colors">
@@ -98,7 +98,7 @@ const goBack = () => navigateTo('/property')
         <div class="lg:col-span-2 space-y-6">
           <div
             @click="expandImage(propertyPhotoSrc)"
-            class="relative w-full h-[500px] rounded-3xl overflow-hidden shadow-2xl group cursor-zoom-in"
+            class="relative w-full h-125 rounded-3xl overflow-hidden shadow-2xl group cursor-zoom-in"
           >
             <div
               :style="{ backgroundImage: `url(${propertyPhotoSrc})` }"
