@@ -3,14 +3,6 @@ import type { NewsItem } from '~/models/blog'
 
 const props = withDefaults(defineProps<NewsItem>(), {})
 
-console.log(props.content)
-function stringToHTML(str: string) {
-  const parser = new DOMParser()
-  const doc = parser.parseFromString(str, 'text/html')
-  // For a single element, you often want the body content
-  // Note: this handles only what's inside <body></body> implicitly
-  return doc.body
-}
 function formatDate(s: string) {
   if (!s) throw new Error('Invalid date')
   const d = new Date(s)
@@ -26,7 +18,7 @@ const truncate = (string: string) => {
 </script>
 <template>
   <div
-    class="grow flex flex-row xl:flex-col w-full xl:w-100 h-25 md:h-55 xl:h-auto rounded-lg shadow-lg overflow-hidden bg-white dark:bg-[#212121] border border-[#e8e8e8]/50 dark:border-[#2e2e2e]"
+    class="hover:cursor-pointer hover:scale-101 duration-300 transition-transform grow flex flex-row xl:flex-col w-full xl:w-100 h-25 md:h-55 xl:h-auto rounded-lg shadow-lg overflow-hidden bg-white dark:bg-[#212121] border border-[#e8e8e8]/50 dark:border-[#2e2e2e]"
   >
     <div
       class="xl:w-full aspect-square bg-cover"
