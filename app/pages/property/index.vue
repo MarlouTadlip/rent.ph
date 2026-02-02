@@ -80,7 +80,7 @@ onMounted(async () => {
           <h1 class="font-bold text-lg dark:text-white dark:bg-[#212121] bg-orange-300 px-3 rounded-sm py-1">Categories</h1>
             <div class="mt-5 mb-10">
               <template v-for="(listings, category, index) in categories" :key="category">
-                <div class="flex justify-between mt-2 px-3">
+                <div class="flex justify-between mt-4 px-3">
                   <a href="#" class="text-sm text-gray-600 dark:text-white hover:text-blue-600 transition-colors">
                     {{ category }} 
                   </a>
@@ -93,7 +93,7 @@ onMounted(async () => {
           <h1 class="font-bold text-lg dark:text-white dark:bg-[#212121] bg-orange-300 px-3 rounded-sm py-1">Top Rental Searches</h1>
             <div class="mt-5">
               <template v-for="(searches in topSearches" :key="searches">
-                <div class="flex justify-between mt-2 px-3">
+                <div class="flex justify-between mt-4 px-3">
                   <a href="#" class="text-sm text-gray-600 dark:text-white hover:text-blue-600 transition-colors ">
                     {{ searches }} 
                   </a>
@@ -102,7 +102,7 @@ onMounted(async () => {
             </div>
         </div>
         <!-------------------------------------------------------------------------------------------------------->
-        <div id="propertiesSection" class="w-4/5 flex flex-col overflow-y-auto pr-2 custom-scrollbar" style="max-height: calc(140vh);">
+        <div id="propertiesSection" class="w-4/5 flex flex-col overflow-y-auto pr-2 custom-scrollbar" style="max-height: calc(175vh);">
           <ClientOnly>
             <propertySearchBar />
             <propertiesAndListings2 :properties="propertyStore.properties" />
