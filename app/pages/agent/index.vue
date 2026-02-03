@@ -145,6 +145,31 @@ const categories: Record<string, string> = {
   'Parking Space': '9',
   Others: '50',
 }
+
+const topSearches: string[] = [
+  'Condominium for rent in Cebu City',
+  'House and lot for rent in Lapu-Lapu City',
+  'House and lot for rent in Mactan',
+  'Studio Unit for rent in Makati',
+  'Unit for rent in Bonifacio Global City',
+  'Commercial Space in Philippines',
+  'Commercial Spaces in Mandaue City',
+  'Warehouse for rent in Cagayan de Oro',
+  'Pet friendly unit in Manila',
+  'For rent in Batangas',
+  'Warehouse for lease in General Santos',
+  'Commercial space for rent in Gensan',
+  'Davao house and lot for rent',
+  'Davao studio unit for rent',
+  '1 bedroom unit for rent in Davao City',
+  'Warehouse for rent in Puerto Princesa',
+  '2BR condo w/ parking for rent in Cebu City',
+  'Parking Space for rent',
+  'Rental properties in Pampanga',
+  '1 Bedroom in Cebu City',
+  'Studio in Metro Manila',
+  'Rental Properties in Makati City',
+]
 </script>
 
 <template>

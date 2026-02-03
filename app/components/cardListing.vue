@@ -56,7 +56,7 @@ const shareProperty = () => {
 <template>
   <div
     v-if="orientation === 'vertical'"
-    class="rounded-xl justify-between w-80 h-90 flex flex-col shadow-lg relative bg-whtie dark:bg-[#1e1e1e] cursor-pointer"
+    class="rounded-xl justify-between w-80 h-90 flex flex-col border relative bg-whtie dark:bg-[#1e1e1e] cursor-pointer"
   >
     <div
       class="h-1/2 w-full rounded-t-lg bg-cover bg-bottom relative"

@@ -6,7 +6,6 @@ const { id } = route.params
 
 const managerStore = useManagerStore()
 
-// State to track if the user wants to see all reviews
 const showAllReviews = ref(false)
 
 // Logic to limit the display to 4 items unless toggled
@@ -36,8 +35,9 @@ onMounted(async () => {
     <Navbar />
   </ClientOnly>
 
-  <div class="h-screen bg-white dark:bg-[#0f1011] pt-20 overflow-hidden">
-    <div class="max-w-8xl mx-auto px-6 lg:px-12 h-full flex flex-col">
+  <div class="min-h-screen lg:h-screen bg-white dark:bg-[#0f1011] pt-20 lg:overflow-hidden flex flex-col">
+    <div class="max-w-8xl mx-auto px-6 lg:px-12 w-full h-full flex flex-col">
+      
       <div class="py-6 shrink-0">
         <button
           @click="goBack"
@@ -306,7 +306,7 @@ onMounted(async () => {
             <div v-if="managerStore.reviews.length > 4" class="flex justify-center">
               <button
                 @click="showAllReviews = !showAllReviews"
-                class="px-8 py-3 border border-black dark:border-white rounded-full text-sm font-bold uppercase tracking-widest hover:bg-[#fe8e0a] hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"
+                class="px-8 py-3 border border-black dark:border-white rounded-full text-xs md:text-sm font-bold uppercase tracking-widest hover:bg-[#fe8e0a] hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"
               >
                 {{
                   showAllReviews ? 'Show Less' : `View All ${managerStore.reviews.length} Reviews`
@@ -316,9 +316,9 @@ onMounted(async () => {
           </section>
 
           <section>
-            <div class="flex items-center justify-between mb-10">
-              <h2 class="text-2xl font-bold uppercase tracking-widest">Active Listings</h2>
-              <div class="h-px flex-1 mx-8 bg-gray-100 dark:bg-gray-800" />
+            <div class="flex items-center justify-between mb-8 md:mb-10">
+              <h2 class="text-xl md:text-2xl font-bold uppercase tracking-widest">Active Listings</h2>
+              <div class="h-px flex-1 mx-4 md:mx-8 bg-gray-100 dark:bg-gray-800" />
             </div>
             <PropertiesAndListings />
           </section>
@@ -329,18 +329,22 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-.custom-scrollbar::-webkit-scrollbar {
-  width: 4px;
-}
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: #e5e7eb;
-  border-radius: 10px;
-}
+/* Hidden scrollbar but functional on mobile */
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 .no-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+/* Custom scroll for main content */
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-thumb { 
+  background: #e5e7eb; 
+  border-radius: 10px; 
+}
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #3f3f46;
 }
 </style>

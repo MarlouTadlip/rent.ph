@@ -91,7 +91,7 @@ onMounted(async () => {
             </div>
           <h1 class="font-bold text-lg dark:text-black dark:bg-orange-300 bg-orange-300 px-3 rounded-sm py-1">Top Rental Searches</h1>
             <div class="mt-5">
-              <template v-for="(searches in topSearches" :key="searches">
+              <template v-for="searches in topSearches" :key="searches">
                 <div class="flex justify-between mt-4 px-3">
                   <a href="#" class="text-sm text-gray-600 dark:text-white hover:text-blue-600 transition-colors ">
                     {{ searches }} 
