@@ -101,7 +101,7 @@ onMounted(async () => {
             </div>
         </div>
         <!-------------------------------------------------------------------------------------------------------->
-        <div id="propertiesSection" class="w-4/5 flex flex-col overflow-y-auto pr-2 custom-scrollbar" style="max-height: calc(175gitvh);">
+        <div id="propertiesSection" class="w-4/5 flex flex-col overflow-y-auto pr-2 custom-scrollbar" style="max-height: calc(175vh);">
           <ClientOnly>
             <propertySearchBar />
             <propertiesAndListings2 :properties="propertyStore.properties" />
