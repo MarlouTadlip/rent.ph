@@ -1,14 +1,14 @@
 <script setup lang="ts"></script>
 <template>
   <div
-    class="dark:bg-[#212121] p-4 md:p-6 rounded-lg gap-4 border w-19/20 max-w-8xl mx-auto border-[#fe8e0a]"
+    class="dark:bg-[#212121] p-4 md:p-6 rounded-lg gap-4 border border-gray-300 w-19/20 max-w-8xl mx-auto bg-gray-50 dark:border-gray-800"
   >
     <div class="flex flex-col md:flex-row gap-4 items-end ">
       <div class="flex flex-col gap-2 flex-1">
         <Label for="location" class="text-sm md:text-base">Keyword</Label>
         <Input
           name="keyword"
-          class="w-full py-3 pl-3 border border-dark-100 rounded-md text-sm h-10 border-[#fe8e0a]"
+          class="w-full py-3 pl-3 border border-dark-100 rounded-md text-sm h-10"
           icon="i-lucide-search"
           placeholder="Keyword"
         />
@@ -16,7 +16,7 @@
       <div class="flex flex-col gap-2 flex-1">
         <Label for="location" class="text-sm md:text-base">Location</Label>
         <Select id="location">
-          <SelectTrigger class="w-full py-3 md:py-5 border-[#fe8e0a]">
+          <SelectTrigger class="w-full py-3 md:py-5">
             <SelectValue>
               <Icon name="lucide:map-pin" />
               <Label class="text-sm md:text-base">Select/Enter a City</Label>
@@ -34,7 +34,7 @@
       <div class="flex flex-col gap-2 flex-1">
         <Label for="type" class="text-sm md:text-base">Type</Label>
         <Select id="type">
-          <SelectTrigger class="w-full py-3 md:py-5 border-[#fe8e0a]">
+          <SelectTrigger class="w-full py-3 md:py-5">
             <SelectValue placeholder="Any" class="text-sm md:text-base" />
           </SelectTrigger>
           <SelectContent>
@@ -49,7 +49,7 @@
       <div class="flex flex-col gap-2 flex-1">
         <Label for="PriceRange" class="text-sm md:text-base">Price Range</Label>
         <Select id="PriceRange">
-          <SelectTrigger class="w-full py-3 md:py-5 border-[#fe8e0a]">
+          <SelectTrigger class="w-full py-3 md:py-5">
             <SelectValue placeholder="Any" class="text-sm md:text-base" />
           </SelectTrigger>
           <SelectContent>

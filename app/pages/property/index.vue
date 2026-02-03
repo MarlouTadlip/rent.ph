@@ -76,7 +76,7 @@ onMounted(async () => {
       <div class="flex flex-row gap-6">
         <!------------------------------------------------------------------------------------------------------>
         <div id="categoriesSection" class="w-1/6 h-fit mb-20">
-          <h1 class="font-bold text-lg dark:text-white dark:bg-[#212121] bg-orange-300 px-3 rounded-sm py-1">Categories</h1>
+          <h1 class="font-bold text-lg dark:text-black dark:bg-orange-300 bg-orange-300 px-3 rounded-sm py-1">Categories</h1>
             <div class="mt-5 mb-10">
               <template v-for="(listings, category, index) in categories" :key="category">
                 <div class="flex justify-between mt-4 px-3">
@@ -89,7 +89,7 @@ onMounted(async () => {
                 </div>
               </template>
             </div>
-          <h1 class="font-bold text-lg dark:text-white dark:bg-[#212121] bg-orange-300 px-3 rounded-sm py-1">Top Rental Searches</h1>
+          <h1 class="font-bold text-lg dark:text-black dark:bg-orange-300 bg-orange-300 px-3 rounded-sm py-1">Top Rental Searches</h1>
             <div class="mt-5">
               <template v-for="(searches in topSearches" :key="searches">
                 <div class="flex justify-between mt-4 px-3">
