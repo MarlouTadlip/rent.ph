@@ -154,12 +154,11 @@ const categories: Record<string, string> = {
     </ClientOnly>
 
     <div class="flex flex-col w-full px-4 sm:px-6 md:px-10 pt-20 md:pt-30 pb-10 md:pb-20">
-      
       <h1 class="text-3xl md:text-4xl font-semibold mb-6 md:mb-8 text-center md:text-left">
         Rent Managers
       </h1>
 
-      <button 
+      <button
         @click="showFilters = !showFilters"
         class="md:hidden mb-6 w-full py-3 px-4 bg-[#fe8e0a] text-[#fafafa] rounded-lg flex items-center justify-center gap-2 font-medium shadow-md"
       >
@@ -168,13 +167,14 @@ const categories: Record<string, string> = {
       </button>
 
       <div class="flex flex-col md:flex-row gap-8">
-        
         <aside
           id="categoriesSection"
           class="w-full md:w-1/4 lg:w-1/5 h-fit border border-gray-200 rounded-xl bg-white shadow-lg p-6 md:p-8 dark:bg-[#212121] dark:border-gray-800 transition-all duration-300"
           :class="[showFilters ? 'block' : 'hidden md:block']"
         >
-          <h2 class="font-bold text-xl dark:text-white mb-6 border-b pb-2 border-gray-100 dark:border-gray-700">
+          <h2
+            class="font-bold text-xl dark:text-white mb-6 border-b pb-2 border-gray-100 dark:border-gray-700"
+          >
             Categories
           </h2>
           <div class="space-y-4">
@@ -186,7 +186,9 @@ const categories: Record<string, string> = {
                 >
                   {{ category }}
                 </a>
-                <span class="text-xs font-medium bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full text-gray-500">
+                <span
+                  class="text-xs font-medium bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full text-gray-500"
+                >
                   {{ listings }}
                 </span>
               </div>
@@ -201,7 +203,13 @@ const categories: Record<string, string> = {
             </ClientOnly>
 
             <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              <agentsCardSkeleton
+                v-if="managerStore.loading"
+                v-for="_ in new Array(8)"
+                orientation="vertical"
+              />
               <agentscard
+                v-else
                 v-for="manager in managerStore.managers"
                 :key="manager.id"
                 v-bind="manager"
