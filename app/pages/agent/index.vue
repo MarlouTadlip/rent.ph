@@ -145,6 +145,31 @@ const categories: Record<string, string> = {
   'Parking Space': '9',
   Others: '50',
 }
+
+const topSearches: string[] = [
+  'Condominium for rent in Cebu City',
+  'House and lot for rent in Lapu-Lapu City',
+  'House and lot for rent in Mactan',
+  'Studio Unit for rent in Makati',
+  'Unit for rent in Bonifacio Global City',
+  'Commercial Space in Philippines',
+  'Commercial Spaces in Mandaue City',
+  'Warehouse for rent in Cagayan de Oro',
+  'Pet friendly unit in Manila',
+  'For rent in Batangas',
+  'Warehouse for lease in General Santos',
+  'Commercial space for rent in Gensan',
+  'Davao house and lot for rent',
+  'Davao studio unit for rent',
+  '1 bedroom unit for rent in Davao City',
+  'Warehouse for rent in Puerto Princesa',
+  '2BR condo w/ parking for rent in Cebu City',
+  'Parking Space for rent',
+  'Rental properties in Pampanga',
+  '1 Bedroom in Cebu City',
+  'Studio in Metro Manila',
+  'Rental Properties in Makati City',
+]
 </script>
 
 <template>
@@ -169,30 +194,21 @@ const categories: Record<string, string> = {
 
       <div class="flex flex-col md:flex-row gap-8">
         
-        <aside
-          id="categoriesSection"
-          class="w-full md:w-1/4 lg:w-1/5 h-fit border border-gray-200 rounded-xl bg-white shadow-lg p-6 md:p-8 dark:bg-[#212121] dark:border-gray-800 transition-all duration-300"
-          :class="[showFilters ? 'block' : 'hidden md:block']"
-        >
-          <h2 class="font-bold text-xl dark:text-white mb-6 border-b pb-2 border-gray-100 dark:border-gray-700">
-            Categories
-          </h2>
-          <div class="space-y-4">
-            <template v-for="(listings, category) in categories" :key="category">
-              <div class="flex justify-between items-center group">
-                <a
-                  href="#"
-                  class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-[#fe8e0a] transition-colors"
-                >
-                  {{ category }}
-                </a>
-                <span class="text-xs font-medium bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full text-gray-500">
-                  {{ listings }}
-                </span>
-              </div>
-            </template>
-          </div>
-        </aside>
+        <div id="categoriesSection" class="w-1/6 h-fit mb-20">
+          <h1 class="font-bold text-lg dark:text-black dark:bg-orange-300 bg-orange-300 px-3 rounded-sm py-1">Categories</h1>
+            <div class="mt-5 mb-10">
+              <template v-for="(listings, category, index) in categories" :key="category">
+                <div class="flex justify-between mt-4 px-3">
+                  <a href="#" class="text-sm text-gray-600 dark:text-white hover:text-blue-600 transition-colors">
+                    {{ category }} 
+                  </a>
+                  <a href="#" class="text-sm text-gray-600 dark:text-white hover:text-blue-600 transition-colors">
+                    {{ listings }} Properties
+                  </a>
+                </div>
+              </template>
+            </div>
+        </div>
 
         <main class="w-full md:w-3/4 lg:w-4/5">
           <div class="w-full">
