@@ -1,7 +1,8 @@
 <script setup lang="ts">
 const blogStore = useBlogStore()
+
 function formatDate(s: string) {
-  if (!s) throw new Error('Invalid date')
+  if (!s) return ''
   const d = new Date(s)
   return d.toLocaleDateString('en-US', {
     month: 'short',
@@ -9,62 +10,83 @@ function formatDate(s: string) {
     year: 'numeric',
   })
 }
+
 onMounted(async () => {
   const route = useRoute()
   const { id } = route.params
   await blogStore.getBlog(id as string)
-  console.log(blogStore.blog?.content)
 })
 </script>
+
 <template>
-  <div id="wholePage" class="w-screen overflow-hidden flex flex-col">
+  <div id="wholePage" class="w-screen min-h-screen flex flex-col">
     <ClientOnly>
       <navbar />
     </ClientOnly>
+    
     <div
-      class="bg-[url(/blogBackGround.png)] dark:bg-[url(/blogBackGroundDark.png)] bg-no-repeat w-screen h-screen bg-cover fixed -z-10"
+      class="bg-[url(/blogBackGround.png)] dark:bg-[url(/blogBackGroundDark.png)] bg-no-repeat w-full h-full bg-cover fixed inset-0 -z-10"
     />
+
     <BlogDetailSkeleton v-if="blogStore.loading" />
-    <div v-else id="scrollAraa" class="">
-      <div id="HeadSection" class="justify-items-center">
-        <p class="text-5xl pt-50 font-bold w-1/2 text-center">
+
+    <div v-else id="scrollArea" class="w-full">
+      <div id="HeadSection" class="flex flex-col items-center px-6 text-center">
+        <h1 class="text-3xl md:text-5xl pt-32 md:pt-50 font-bold max-w-4xl">
           {{ blogStore.blog?.title }}
-        </p>
-        <div id="DetailsSection" class="flex flex-row gap-5 mt-5">
-          <div class="flex flex-row gap-3 items-center">
-            <Icon name="lucide:calendar-clock" />
+        </h1>
+        
+        <div id="DetailsSection" class="flex flex-wrap justify-center items-center gap-3 md:gap-5 mt-6 text-sm md:text-base">
+          <div class="flex flex-row gap-2 items-center">
+            <Icon name="lucide:calendar-clock" class="size-4" />
             <p>{{ formatDate(blogStore.blog?.created_at || new Date().toISOString()) }}</p>
           </div>
-          <p>|</p>
-          <div class="flex flex-row gap-3 items-center">
-            <Icon name="lucide:eye" />
+          <p class="hidden sm:block text-gray-400">|</p>
+          <div class="flex flex-row gap-2 items-center">
+            <Icon name="lucide:eye" class="size-4" />
             <p>{{ blogStore.blog?.view }} view{{ blogStore.blog?.view !== 1 ? 's' : '' }}</p>
           </div>
         </div>
       </div>
-      <div id="SocialSection mx-auto" class="justify-items-center mt-10">
-        <img :src="blogStore.blog?.image" alt="" class="w-150 h-150 shadow-sm round-sm" />
-        <div class="justify-start items-center w-215 flex flex-row gap-3 mt-20">
-          <p>Share</p>
-          <Icon name="lucide:facebook" class="text-blue-500" />
-          <Icon name="ic:baseline-whatsapp" class="text-green-500" />
-          <Icon name="lucide:link" />
+
+      <div id="SocialSection" class="flex flex-col items-center mt-10 px-4">
+        <div class="w-full max-w-3xl aspect-video md:aspect-square overflow-hidden rounded-xl shadow-lg">
+          <img 
+            :src="blogStore.blog?.image" 
+            alt="Blog Hero" 
+            class="w-full h-full object-cover" 
+          />
+        </div>
+
+        <div class="w-full max-w-3xl flex flex-row items-center gap-4 mt-8 md:mt-12 border-b border-gray-200 dark:border-gray-800 pb-4">
+          <p class="font-semibold">Share:</p>
+          <button class="hover:scale-110 transition-transform"><Icon name="lucide:facebook" class="text-blue-600 size-6" /></button>
+          <button class="hover:scale-110 transition-transform"><Icon name="ic:baseline-whatsapp" class="text-green-500 size-6" /></button>
+          <button class="hover:scale-110 transition-transform"><Icon name="lucide:link" class="size-5" /></button>
         </div>
       </div>
-      <div class="max-w-4xl mx-auto px-4 py-8 font-sans leading-relaxed">
-        <h1 class="text-3xl font-bold mb-6">
-          {{ blogStore.blog?.title }}
-        </h1>
+
+      <main class="max-w-4xl mx-auto px-6 py-8 md:py-12 font-sans leading-relaxed">
         <div
+          class="prose prose-lg dark:prose-invert max-w-none prose-img:rounded-xl"
           v-html="
             blogStore.blog?.content
-              .replaceAll('Calibri', 'Poppins')
-              .replaceAll('color: #000000; ', '')
+              ?.replaceAll('Calibri', 'Poppins')
+              ?.replaceAll('color: #000000; ', '')
           "
         ></div>
 
-        <div id="RelatedBlogsScetion"></div>
-      </div>
+        <div id="RelatedBlogsSection" class="mt-20">
+          </div>
+      </main>
     </div>
   </div>
 </template>
+
+<style scoped>
+/* Ensure v-html images don't overflow their container */
+:deep(img) {
+  max-width: 100%;
+  height: auto;
+}
+</style>

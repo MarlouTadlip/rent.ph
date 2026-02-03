@@ -16,9 +16,9 @@ import Testimonials from '~/components/testimonials.vue'
       <ClientOnly>
         <AboutCaresSection />
       </ClientOnly>
-      <ClientOnly>
+      <!-- <ClientOnly>
         <testimonials />
-      </ClientOnly>
+      </ClientOnly> -->
       <ClientOnly>
         <AboutTrustedPartners />
       </ClientOnly>

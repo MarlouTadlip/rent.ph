@@ -8,10 +8,8 @@ import propertiesAndListings2 from '~/components/propertiesAndListings2.vue'
 
 const propertyStore = usePropertyStore()
 
-// const handlePageChange = (page: number) => {
-//   currentPage.value = page
-//   console.log('Changed to page:', page)
-// }
+const showFilters = ref(false)
+
 const categories: Record<string, string> = {
   'Farm Land': '1',
   Condominium: '1951',
@@ -83,8 +81,8 @@ onMounted(async () => {
                   <a href="#" class="text-sm text-gray-600 dark:text-white hover:text-blue-600 transition-colors">
                     {{ category }} 
                   </a>
-                  <a href="#" class="text-sm text-gray-600 dark:text-white hover:text-blue-600 transition-colors">
-                    {{ listings }} Properties
+                  <a href="#" class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 hover:text-blue-600 transition-colors">
+                    {{ listings }}
                   </a>
                 </div>
               </template>
@@ -106,16 +104,44 @@ onMounted(async () => {
             <propertySearchBar />
             <propertiesAndListings2 :properties="propertyStore.properties" />
           </ClientOnly>
-        </div>
+        </main>
       </div>
     </div>
-    <div class="pt-15">
+
+    <!-- Backlinks Section -->
+    <div class="pt-8 md:pt-15">
       <ClientOnly>
         <Backlinks />
       </ClientOnly>
     </div>
+
+    <!-- Footer -->
     <ClientOnly>
       <Footer />
     </ClientOnly>
   </div>
 </template>
+
+<style scoped>
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.5);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(156, 163, 175, 0.7);
+}
+</style>
