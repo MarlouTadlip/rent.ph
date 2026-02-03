@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
+
 const managerStore = useManagerStore()
+const showFilters = ref(false) // Toggle state for mobile sidebar
 
 onMounted(async () => {
   await managerStore.getManagers(1, 8)
@@ -145,55 +148,69 @@ const categories: Record<string, string> = {
 </script>
 
 <template>
-  <div class="w-screen min-h-screen flex flex-col">
+  <div class="w-screen min-h-screen flex flex-col overflow-x-hidden">
     <ClientOnly>
       <navbar />
     </ClientOnly>
-    <div class="flex flex-col w-full mx-5 px-10 pt-30 pb-20 justify-self-center">
-      <h1 class="text-4xl font-semibold mb-8">Rent Managers</h1>
-      <div class="flex flex-row">
-        <div
+
+    <div class="flex flex-col w-full px-4 sm:px-6 md:px-10 pt-20 md:pt-30 pb-10 md:pb-20">
+      
+      <h1 class="text-3xl md:text-4xl font-semibold mb-6 md:mb-8 text-center md:text-left">
+        Rent Managers
+      </h1>
+
+      <button 
+        @click="showFilters = !showFilters"
+        class="md:hidden mb-6 w-full py-3 px-4 bg-[#fe8e0a] text-[#fafafa] rounded-lg flex items-center justify-center gap-2 font-medium shadow-md"
+      >
+        <Icon :name="showFilters ? 'lucide:x' : 'lucide:list-filter'" class="size-5" />
+        {{ showFilters ? 'Close Categories' : 'Filter by Category' }}
+      </button>
+
+      <div class="flex flex-col md:flex-row gap-8">
+        
+        <aside
           id="categoriesSection"
-          class="w-1/5 h-fit border border-gray-200 rounded-lg bg-white shadow-lg p-10 dark:bg-[#212121] dark:border-gray-800 mb-20"
+          class="w-full md:w-1/4 lg:w-1/5 h-fit border border-gray-200 rounded-xl bg-white shadow-lg p-6 md:p-8 dark:bg-[#212121] dark:border-gray-800 transition-all duration-300"
+          :class="[showFilters ? 'block' : 'hidden md:block']"
         >
-          <h1 class="font-bold text-2xl dark:text-white">Categories</h1>
-          <div class="mt-10 mb-37">
-            <template v-for="(listings, category, index) in categories" :key="category">
-              <div class="flex justify-between mt-5">
+          <h2 class="font-bold text-xl dark:text-white mb-6 border-b pb-2 border-gray-100 dark:border-gray-700">
+            Categories
+          </h2>
+          <div class="space-y-4">
+            <template v-for="(listings, category) in categories" :key="category">
+              <div class="flex justify-between items-center group">
                 <a
                   href="#"
-                  class="text-sm text-gray-600 dark:text-white hover:text-blue-600 transition-colors"
+                  class="text-sm text-gray-600 dark:text-gray-300 group-hover:text-[#fe8e0a] transition-colors"
                 >
                   {{ category }}
                 </a>
-                <a
-                  href="#"
-                  class="text-sm text-gray-600 dark:text-white hover:text-blue-600 transition-colors"
-                >
-                  {{ listings }} Properties
-                </a>
+                <span class="text-xs font-medium bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full text-gray-500">
+                  {{ listings }}
+                </span>
               </div>
             </template>
           </div>
-        </div>
-        <!--------------------------------------------------------------------------------------------------------------------------------------------------------------------->
-        <div class="w-4/5">
-          <div class="container px-4 md:px-10 pb-20">
+        </aside>
+
+        <main class="w-full md:w-3/4 lg:w-4/5">
+          <div class="w-full">
             <ClientOnly>
               <AgentSearchBar />
             </ClientOnly>
 
-            <div class="mt-12 flex flex-wrap gap-4 gap-y-5 justify-center">
+            <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               <agentscard
                 v-for="manager in managerStore.managers"
                 :key="manager.id"
                 v-bind="manager"
                 orientation="vertical"
-                class="w-[calc(25%-1rem)]"
+                class="w-full"
               />
             </div>
 
-            <div class="flex justify-center mt-12">
+            <div class="flex justify-center mt-12 overflow-x-auto py-2">
               <pagination
                 :current-page="managerStore.pagination?.current_page ?? 1"
                 :total-pages="managerStore.pagination?.total ?? 1"
@@ -201,16 +218,15 @@ const categories: Record<string, string> = {
               />
             </div>
           </div>
-        </div>
+        </main>
       </div>
     </div>
-    <div class="pt-15">
+
+    <div class="mt-auto">
       <ClientOnly>
         <Backlinks />
+        <Footer />
       </ClientOnly>
     </div>
-    <ClientOnly>
-      <Footer />
-    </ClientOnly>
   </div>
 </template>

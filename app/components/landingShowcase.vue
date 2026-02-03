@@ -208,7 +208,7 @@ onMounted(() => {
       <p class="uppercase pt-4 text-gray-400 dark:text-gray-500">Meet Our Top Performers</p>
     </div>
 
-    <div class="relative max-w-7xl mx-auto">
+    <div class="relative w-full lg:max-w-[70%] mx-auto">
       <Carousel
         class="w-full"
         :opts="{
@@ -279,3 +279,4 @@ onMounted(() => {
     </div>
   </div>
 </template>
+

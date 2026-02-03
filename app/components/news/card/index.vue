@@ -18,7 +18,7 @@ const truncate = (string: string) => {
 </script>
 <template>
   <div
-    class="hover:cursor-pointer hover:scale-101 duration-300 transition-transform grow flex flex-row xl:flex-col w-full xl:w-100 h-25 md:h-55 xl:h-auto rounded-lg shadow-lg overflow-hidden bg-white dark:bg-[#212121] border border-[#e8e8e8]/50 dark:border-[#2e2e2e]"
+    class="hover:cursor-pointer hover:scale-101 duration-300 transition-transform grow flex flex-row xl:flex-col w-full xl:w-100 h-40 md:h-55 xl:h-auto rounded-lg shadow-lg overflow-hidden bg-white dark:bg-[#212121] border border-[#e8e8e8]/50 dark:border-[#2e2e2e]"
   >
     <div
       class="xl:w-full aspect-square bg-cover"

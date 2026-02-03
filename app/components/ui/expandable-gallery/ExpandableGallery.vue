@@ -32,37 +32,60 @@ const placeDescriptions = [
 </script>
 
 <template>
-  <div class="flex flex-col md:flex-row h-80 md:h-96 w-full gap-2 md:gap-2" :class="[props.class]">
+  <!-- Mobile: Horizontal scrollable grid with full images -->
+  <div class="md:hidden overflow-x-auto pb-4 -mx-4 px-4">
+    <div class="flex gap-4 w-max">
+      <div
+        v-for="(image, index) in images"
+        :key="image"
+        class="relative w-72 h-56 cursor-pointer overflow-hidden rounded-2xl group"
+      >
+        <img
+          class="absolute inset-0 h-full w-full object-cover transition-all duration-300 group-active:scale-95"
+          :src="image"
+          :alt="placeNames[index] || 'Property location'"
+        />
+
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"
+        />
+
+        <div class="absolute bottom-0 left-0 right-0 p-5">
+          <h3 class="text-xl font-bold text-white drop-shadow-lg">
+            {{ placeNames[index] || 'Location' }}
+          </h3>
+          <p class="text-sm text-white/90 drop-shadow-md mt-1">
+            {{ placeDescriptions[index] || 'View Properties' }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Desktop: Expandable horizontal strip layout -->
+  <div class="hidden md:flex h-96 w-full gap-2" :class="[props.class]">
     <div
       v-for="(image, index) in images"
       :key="image"
-      class="relative flex h-32 md:h-full flex-1 cursor-pointer overflow-hidden rounded-xl transition-all duration-500 ease-in-out hover:flex-[3] md:hover:flex-[3] group"
+      class="relative flex h-full flex-1 cursor-pointer overflow-hidden rounded-xl transition-all duration-500 ease-in-out hover:flex-[3] group"
     >
       <img
-        class="relative h-full w-full object-cover transition-all duration-500 group-hover:scale-110"
+        class="absolute inset-0 h-full w-full object-cover transition-all duration-500 group-hover:scale-110"
         :src="image"
         :alt="placeNames[index] || 'Property location'"
       />
 
       <div
-        class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-100 transition-opacity duration-300 group-hover:opacity-0"
+        class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent transition-opacity duration-300"
       />
 
-      <div
-        class="absolute inset-0 p-2 md:p-4 text-white flex items-center justify-center md:absolute md:bottom-0 md:left-0 md:right-0 md:items-start md:justify-start"
-      >
-        <div class="text-center md:text-left">
-          <h3
-            class="text-sm md:text-lg font-semibold drop-shadow-lg text-white transition-all duration-300 group-hover:translate-y-0 translate-y-0"
-          >
-            {{ placeNames[index] || 'Location' }}
-          </h3>
-          <p
-            class="text-xs md:text-sm drop-shadow-md transform transition-all duration-300 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-90 text-white md:translate-y-full md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-90"
-          >
-            {{ placeDescriptions[index] || 'View Properties' }}
-          </p>
-        </div>
+      <div class="absolute bottom-0 left-0 right-0 p-6 text-white flex flex-col justify-end">
+        <h3 class="text-xl font-bold drop-shadow-lg whitespace-nowrap">
+          {{ placeNames[index] || 'Location' }}
+        </h3>
+        <p class="text-sm drop-shadow-md transform transition-all duration-300 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 mt-1 whitespace-nowrap">
+          {{ placeDescriptions[index] || 'View Properties' }}
+        </p>
       </div>
     </div>
   </div>
