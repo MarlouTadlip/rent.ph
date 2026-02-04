@@ -4,6 +4,8 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
+  SidebarGroupLabel,
+  SidebarGroupContent,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -27,6 +29,15 @@ import {
   Wrench,
   User,
   User2,
+  Moon,
+  Sun,
+  NotebookTabs,
+  LocateFixed,
+  ExternalLink,
+  TrendingUpDown,
+  Download,
+  IdCard,
+  KeyRound,
 } from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
 
@@ -46,6 +57,11 @@ const isActiveRoute = (path: string) => {
   }
   return currentPath.startsWith(path)
 }
+
+const handleLogout = () => {
+  // Clear any existing session/cookie/token logic here if applicable
+  navigateTo('/')
+}
 </script>
 
 <template>
@@ -53,118 +69,166 @@ const isActiveRoute = (path: string) => {
     <SidebarHeader class="pt-6">
       <SidebarMenu>
         <SidebarMenuItem>
-          <SidebarMenuButton size="lg" class="bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg transition-colors duration-200">
+          <SidebarMenuButton size="lg" class="hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg transition-colors duration-200">
             <DashboardLogo />
           </SidebarMenuButton>
         </SidebarMenuItem>
       </SidebarMenu>
     </SidebarHeader>
     <SidebarContent class="pt-6">
-      <!-- Dark Mode Switch Centered -->
-      <div class="flex justify-center mb-8">
-        <button 
-          @click="changeMode"
-          class="relative w-12 h-12 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 rounded-lg border border-gray-300 dark:border-gray-600 transition-colors duration-200 flex items-center justify-center"
-        >
-          <Icon
-            v-if="colorMode.preference === 'light'"
-            name="radix-icons:moon"
-            class="h-5 w-5 text-gray-600 dark:text-gray-400"
-          />
-          <Icon
-            v-else
-            name="radix-icons:sun"
-            class="h-5 w-5 text-gray-600 dark:text-gray-400"
-          />
-        </button>
-      </div>
-      
       <SidebarGroup>
         <SidebarMenu class="space-y-2">
           <SidebarMenuItem>
-            <SidebarMenuButton as-child :class="[
+            <SidebarMenuButton as-child tooltip="Home" :class="[
               'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md transition-colors duration-200 h-11',
               isActiveRoute('/dashboard') ? 'bg-gray-100 dark:bg-gray-800 font-medium' : ''
             ]">
-              <NuxtLink to="/dashboard" class="flex items-center">
-                <Home class="w-5 h-5 mr-3" />
+              <NuxtLink to="/dashboard">
+                <Home />
                 <span>Home</span>
-              </NuxtLink>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton as-child @click="profileOpen = !profileOpen" :class="[
-              'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md transition-colors duration-200 h-11',
-              isActiveRoute('/dashboard/profile') ? 'bg-gray-100 dark:bg-gray-800 font-medium' : ''
-            ]">
-              <button class="flex items-center w-full">
-                <User class="w-5 h-5 mr-3" />
-                <span>Profile</span>
-                <ChevronRight
-                  class="ml-auto transition-transform duration-200"
-                  :class="{ 'rotate-90': profileOpen }"
-                />
-              </button>
-            </SidebarMenuButton>
-            <div v-if="profileOpen" class="mt-1 ml-4">
-              <SidebarMenuSub>
-                <SidebarMenuItem>
-                  <SidebarMenuButton as-child :class="[
-                    'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-md transition-colors duration-200 h-9 text-sm',
-                    isActiveRoute('/dashboard/profile/edit') ? 'bg-gray-100 dark:bg-gray-800 font-medium' : ''
-                  ]">
-                    <NuxtLink to="/dashboard/profile/edit" class="flex items-center">
-                      <span>Edit Profile</span>
-                    </NuxtLink>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              </SidebarMenuSub>
-            </div>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton as-child :class="[
-              'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md transition-colors duration-200 h-11',
-              isActiveRoute('/dashboard/inbox') ? 'bg-gray-100 dark:bg-gray-800 font-medium' : ''
-            ]">
-              <NuxtLink to="/dashboard/inbox" class="flex items-center">
-                <Inbox class="w-5 h-5 mr-3" />
-                <span>Inbox</span>
-              </NuxtLink>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton as-child :class="[
-              'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md transition-colors duration-200 h-11',
-              isActiveRoute('/dashboard/settings') ? 'bg-gray-100 dark:bg-gray-800 font-medium' : ''
-            ]">
-              <NuxtLink to="/dashboard/settings" class="flex items-center">
-                <Settings class="w-5 h-5 mr-3" />
-                <span>Settings</span>
-              </NuxtLink>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton as-child :class="[
-              'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md transition-colors duration-200 h-11',
-              isActiveRoute('/dashboard/tools') ? 'bg-gray-100 dark:bg-gray-800 font-medium' : ''
-            ]">
-              <NuxtLink to="/dashboard/tools" class="flex items-center">
-                <Wrench class="w-5 h-5 mr-3" />
-                <span>Tools</span>
               </NuxtLink>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarGroup>
+
+      <!-- Personal Settings Group -->
+      <SidebarGroup>
+        <SidebarGroupLabel>Personal Settings</SidebarGroupLabel>
+        <SidebarGroupContent>
+          <SidebarMenu class="space-y-1">
+            <SidebarMenuItem>
+              <SidebarMenuButton as-child tooltip="Inbox" :class="[
+                'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md transition-colors duration-200 h-10',
+                isActiveRoute('/dashboard/inbox') ? 'bg-gray-100 dark:bg-gray-800 font-medium' : ''
+              ]">
+                <NuxtLink to="/dashboard/inbox">
+                  <Inbox />
+                  <span>Inbox</span>
+                </NuxtLink>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton as-child tooltip="Edit Profile" :class="[
+                'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md transition-colors duration-200 h-10',
+                isActiveRoute('/dashboard/profile/edit') ? 'bg-gray-100 dark:bg-gray-800 font-medium' : ''
+              ]">
+                <NuxtLink to="/dashboard/profile/edit">
+                  <User />
+                  <span>Edit Profile</span>
+                </NuxtLink>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton as-child tooltip="Downloadables" :class="[
+                'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md transition-colors duration-200 h-10',
+                isActiveRoute('/dashboard/downloadables') ? 'bg-gray-100 dark:bg-gray-800 font-medium' : ''
+              ]">
+                <NuxtLink to="/dashboard/downloadables">
+                  <Download />
+                  <span>Downloadables</span>
+                </NuxtLink>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton as-child tooltip="Business Card" :class="[
+                'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md transition-colors duration-200 h-10',
+                isActiveRoute('/dashboard/business-card') ? 'bg-gray-100 dark:bg-gray-800 font-medium' : ''
+              ]">
+                <NuxtLink to="/dashboard/business-card">
+                  <IdCard />
+                  <span>Business Card</span>
+                </NuxtLink>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton as-child tooltip="Change Password" :class="[
+                'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md transition-colors duration-200 h-10',
+                isActiveRoute('/dashboard/change-password') ? 'bg-gray-100 dark:bg-gray-800 font-medium' : ''
+              ]">
+                <NuxtLink to="/dashboard/change-password">
+                  <KeyRound />
+                  <span>Change Password</span>
+                </NuxtLink>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarGroupContent>
+      </SidebarGroup>
+
+      <!-- Rent Manager Tools Group -->
+      <SidebarGroup>
+        <SidebarGroupLabel>Rent Manager Tools</SidebarGroupLabel>
+        <SidebarGroupContent>
+          <SidebarMenu class="space-y-1">
+            <SidebarMenuItem>
+              <SidebarMenuButton as-child tooltip="My Listings" :class="[
+                'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md transition-colors duration-200 h-10',
+                isActiveRoute('/dashboard/listings') ? 'bg-gray-100 dark:bg-gray-800 font-medium' : ''
+              ]">
+                <NuxtLink to="/dashboard/listings">
+                  <NotebookTabs />
+                  <span>My Listings</span>
+                </NuxtLink>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton as-child tooltip="Rental Tracking" :class="[
+                'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md transition-colors duration-200 h-10',
+                isActiveRoute('/dashboard/tracking') ? 'bg-gray-100 dark:bg-gray-800 font-medium' : ''
+              ]">
+                <NuxtLink to="/dashboard/tracking">
+                  <LocateFixed />
+                  <span>Rental Tracking</span>
+                </NuxtLink>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton as-child tooltip="Share Blogs" :class="[
+                'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md transition-colors duration-200 h-10',
+                isActiveRoute('/dashboard/share-blogs') ? 'bg-gray-100 dark:bg-gray-800 font-medium' : ''
+              ]">
+                <NuxtLink to="/dashboard/share-blogs">
+                  <ExternalLink />
+                  <span>Share Blogs</span>
+                </NuxtLink>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton as-child tooltip="Rent Estimate" :class="[
+                'hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md transition-colors duration-200 h-10',
+                isActiveRoute('/dashboard/estimate') ? 'bg-gray-100 dark:bg-gray-800 font-medium' : ''
+              ]">
+                <NuxtLink to="/dashboard/estimate">
+                  <TrendingUpDown />
+                  <span>Rent Estimate</span>
+                </NuxtLink>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarGroupContent>
+      </SidebarGroup>
     </SidebarContent>
     <SidebarFooter class="pb-6">
       <SidebarMenu>
+        <!-- Dark Mode Toggle as Menu Item -->
+        <SidebarMenuItem>
+          <SidebarMenuButton 
+            tooltip="Toggle Theme"
+            @click="changeMode"
+            class="hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md transition-colors duration-200 h-11"
+          >
+            <Moon v-if="colorMode.preference === 'light'" />
+            <Sun v-else />
+            <span>{{ colorMode.preference === 'light' ? 'Dark Mode' : 'Light Mode' }}</span>
+          </SidebarMenuButton>
+        </SidebarMenuItem>
         <SidebarMenuItem>
           <DropdownMenu>
             <DropdownMenuTrigger as-child>
-              <SidebarMenuButton class="hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md transition-colors duration-200 h-11">
-                <User2 class="w-5 h-5 mr-3" /> 
-                <span>Username</span>
+              <SidebarMenuButton tooltip="User Account" class="hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md transition-colors duration-200 h-11">
+                <User2 class="w-5 h-5 mr-3 shrink-0" /> 
+                <span class="truncate">Username</span>
                 <ChevronUp class="ml-auto w-4 h-4" />
               </SidebarMenuButton>
             </DropdownMenuTrigger>
@@ -175,7 +239,10 @@ const isActiveRoute = (path: string) => {
               <DropdownMenuItem class="hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors duration-200">
                 <span>Billing</span>
               </DropdownMenuItem>
-              <DropdownMenuItem class="hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors duration-200">
+              <DropdownMenuItem 
+                class="hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors duration-200 cursor-pointer"
+                @click="handleLogout"
+              >
                 <span class="text-red-600 dark:text-red-400">Sign out</span>
               </DropdownMenuItem>
             </DropdownMenuContent>
