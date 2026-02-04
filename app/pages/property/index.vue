@@ -70,7 +70,7 @@ onMounted(async () => {
     <ClientOnly>
       <navbar />
     </ClientOnly>
-    <div class="flex flex-col w-full mx-5 px-10 pt-30 pb-20 justify-self-center">
+    <div class="flex flex-col w-full px-10 pt-30 pb-20 justify-self-center">
       <h1 class="text-4xl font-semibold mb-8">Property for Rent</h1>
 
       <div class="flex flex-row gap-6">
