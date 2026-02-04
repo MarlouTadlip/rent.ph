@@ -61,7 +61,7 @@ const topSearches: string[] = [
 ]
 
 onMounted(async () => {
-  await propertyStore.getProperties()
+  await propertyStore.getPropertiesbyCategory()
 })
 </script>
 
