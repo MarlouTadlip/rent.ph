@@ -40,6 +40,13 @@ import {
   KeyRound,
 } from 'lucide-vue-next'
 import { Button } from '@/components/ui/button'
+import { useAuthStore } from '~/stores/authStore'
+
+const authStore = useAuthStore()
+
+onMounted(() => {
+  authStore.fetchUserProfile()
+})
 
 
 const profileOpen = ref(false)
@@ -227,7 +234,7 @@ const handleLogout = () => {
             <DropdownMenuTrigger as-child>
               <SidebarMenuButton tooltip="User Account" class="hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md transition-colors duration-200 h-11">
                 <User2 class="w-5 h-5 mr-3 shrink-0" /> 
-                <span class="truncate">Username</span>
+                <span class="truncate">{{ authStore.user?.first_name || authStore.user?.name || 'User' }}</span>
                 <ChevronUp class="ml-auto w-4 h-4" />
               </SidebarMenuButton>
             </DropdownMenuTrigger>
@@ -240,7 +247,7 @@ const handleLogout = () => {
               </DropdownMenuItem>
               <DropdownMenuItem 
                 class="hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors duration-200 cursor-pointer"
-                @click="handleLogout"
+                @click="authStore.logout(); $router.push('/')"
               >
                 <span class="text-red-600 dark:text-red-400">Sign out</span>
               </DropdownMenuItem>
