@@ -57,7 +57,7 @@ const anchors = [
     label: 'About Us',
   },
     {
-    link: '/news',
+    link: '/newsfromhomes',
     label: 'News',
   },
 ]
