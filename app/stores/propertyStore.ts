@@ -104,9 +104,9 @@ export const usePropertyStore = defineStore('property', () => {
   const getMyListings = async () => {
     loading.value = true
 
-    const tokenCookie = useCookie('access_token')
+    const token = useCookie('access_token')
 
-    if (!tokenCookie.value) {
+    if (!token.value) {
       console.error("No access token found")
       loading.value = false
       return
@@ -116,7 +116,7 @@ export const usePropertyStore = defineStore('property', () => {
     const res: any = await $fetch(`${BASE_URL}/agent/properties`, {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${tokenCookie.value}`,
+        'Authorization': `Bearer ${token.value}`,
         'Accept': 'application/json'
       }
     })
@@ -128,7 +128,7 @@ export const usePropertyStore = defineStore('property', () => {
     console.error("Failed to fetch my listings:", error)
 
     if (error.response?.status === 401) {
-      tokenCookie.value = null
+      token.value = null
       navigateTo('/login')
     }
   } finally {
@@ -146,6 +146,6 @@ export const usePropertyStore = defineStore('property', () => {
     getProperties,
     loading,
     myListings,
-   getMyListings
+    getMyListings
   }
 })
