@@ -2,6 +2,7 @@
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { usePropertyStore } from '@/stores/propertyStore';
+import cardListingPropertiesPage from '~/components/listings/cardListingPropertiesPage.vue';
 
 const propertyStore = usePropertyStore()
 const router = useRouter()
