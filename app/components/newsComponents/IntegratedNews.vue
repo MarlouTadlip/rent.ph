@@ -60,7 +60,7 @@ const featuredArticle = computed(() => newsStore.articles[0] || null);
         </NuxtLink>
       </section>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <NuxtLink v-for="article in newsStore.articles.slice(1)" :key="article.id" :to="`/newsfromhomes/${article.id}`"
           class="group bg-white dark:bg-zinc-900 rounded-xl shadow-sm border border-gray-100 dark:border-zinc-800 overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1 cursor-pointer">
           
