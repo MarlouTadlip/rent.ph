@@ -220,7 +220,7 @@ onMounted(() => {
         }"
         @init-api="initAutoplay"
       >
-        <CarouselContent class="-ml-2 md:-ml-4">
+        <CarouselContent class="-ml-2 md:-ml-4 pb-5">
           <CarouselItem 
             v-for="agent in agents" 
             :key="agent.id" 

@@ -72,6 +72,9 @@ const handleLogin = async () => {
     }
 
     const token = data.token || data.data?.token || data.access_token || data.data?.access_token
+    //const tokenCookie = useCookie('access_token') //for access_token
+
+    //tokenCookie.value = data.access.token //for access_token
     
     if (token) {
       authStore.login(token)
